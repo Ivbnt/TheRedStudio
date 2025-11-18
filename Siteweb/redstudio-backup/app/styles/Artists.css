@@ -1,0 +1,496 @@
+@import './shared.css';
+
+/* ============ ARTISTS PAGE ============ */
+
+.artists-page {
+  min-height: 100vh;
+  background-color: var(--dark-bg);
+}
+
+/* GENRE FILTER */
+.genre-filter-section {
+  padding: 2rem 0;
+  background-color: var(--dark-bg);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 80px;
+  z-index: 50;
+}
+
+.genre-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.genre-btn {
+  background-color: transparent;
+  color: var(--light-text);
+  border: 1px solid var(--border-color);
+  padding: 0.7rem 1.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transition);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.genre-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-red);
+  transition: width 0.3s ease;
+}
+
+.genre-btn:hover::after,
+.genre-btn.active::after {
+  width: 100%;
+}
+
+.genre-btn:hover,
+.genre-btn.active {
+  border-color: var(--primary-red);
+  color: var(--primary-red);
+}
+
+/* ARTISTS SHOWCASE GRID */
+.artists-grid-section {
+  padding: 3rem 0;
+}
+
+.artists-showcase {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.artist-showcase-card {
+  position: relative;
+  height: 280px;
+  perspective: 1000px;
+  animation: cardFadeIn 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s ease-out;
+  transform-style: preserve-3d;
+}
+
+.artist-showcase-card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  transition: var(--transition);
+  background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+}
+
+.card-front {
+  overflow: hidden;
+}
+
+.card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+  border-radius: 8px;
+}
+
+.artist-showcase-card:hover .card-front img {
+  transform: scale(1.15) rotate(3deg);
+  filter: brightness(0.8);
+}
+
+.overlay-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, transparent 0%, rgba(196, 30, 58, 0.3) 100%);
+  opacity: 0;
+  transition: var(--transition);
+  pointer-events: none;
+}
+
+.artist-showcase-card:hover .overlay-effect {
+  opacity: 1;
+}
+
+.genre-badge {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(15px);
+  background: linear-gradient(135deg, var(--primary-red), #a01530);
+  color: white;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  opacity: 0;
+  transition: var(--transition);
+  z-index: 10;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(196, 30, 58, 0.3);
+}
+
+.artist-showcase-card:hover .genre-badge {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.card-back {
+  background: linear-gradient(135deg, rgba(196, 30, 58, 0.15) 0%, rgba(196, 30, 58, 0.05) 100%);
+  border: 1px solid var(--primary-red);
+  border-radius: 8px;
+  transform: rotateY(180deg);
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.back-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 100%;
+  height: 100%;
+}
+
+.back-content h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--light-text);
+  letter-spacing: 0.5px;
+}
+
+.back-content p {
+  font-size: 0.8rem;
+  color: #bbb;
+  line-height: 1.4;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.artist-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.link-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(196, 30, 58, 0.3), rgba(196, 30, 58, 0.1));
+  border: 1px solid var(--primary-red);
+  border-radius: 50%;
+  font-size: 1.1rem;
+  transition: var(--transition);
+  text-decoration: none;
+  color: var(--primary-red);
+  box-shadow: 0 4px 12px rgba(196, 30, 58, 0.2);
+}
+
+.link-icon:hover {
+  background: var(--primary-red);
+  color: white;
+  transform: scale(1.25) rotate(12deg);
+  box-shadow: 0 8px 20px rgba(196, 30, 58, 0.4);
+}
+
+.card-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  pointer-events: none;
+  opacity: 0;
+  transition: var(--transition);
+  box-shadow: inset 0 0 0 1px transparent;
+}
+
+.artist-showcase-card:hover .card-border {
+  opacity: 1;
+  box-shadow: inset 0 0 15px 1px rgba(196, 30, 58, 0.4), 0 0 20px rgba(196, 30, 58, 0.2);
+  animation: cardGlow 0.4s ease-out;
+}
+
+@keyframes cardGlow {
+  0% {
+    box-shadow: inset 0 0 0 1px transparent, 0 0 0 rgba(196, 30, 58, 0);
+  }
+  100% {
+    box-shadow: inset 0 0 15px 1px rgba(196, 30, 58, 0.4), 0 0 20px rgba(196, 30, 58, 0.2);
+  }
+}
+
+/* FEATURED SECTION */
+.featured-artists {
+  padding: 3.5rem 0;
+  border-top: 1px solid var(--border-color);
+  background: linear-gradient(135deg, rgba(196, 30, 58, 0.02) 0%, transparent 100%);
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.featured-card {
+  background-color: #1a1a1a;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  transition: var(--transition);
+  text-align: center;
+}
+
+.featured-card:hover {
+  border-color: var(--primary-red);
+  transform: translateY(-8px);
+}
+
+.featured-image {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+}
+
+.featured-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.featured-card:hover .featured-image img {
+  transform: scale(1.1);
+}
+
+.featured-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.featured-card:hover .featured-overlay {
+  opacity: 1;
+}
+
+.play-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-red) 0%, #8b151f 100%);
+  color: white;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.play-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+  transition: var(--transition);
+  z-index: 1;
+}
+
+.play-btn:hover::before {
+  left: 100%;
+}
+
+.play-btn:hover {
+  transform: scale(1.2);
+  box-shadow: 0 10px 25px rgba(196, 30, 58, 0.3);
+}
+
+.featured-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.7rem 0.7rem 0.3rem;
+  margin: 0;
+}
+
+.featured-card p {
+  color: var(--primary-red);
+  font-size: 0.8rem;
+  padding: 0 0.7rem 0.7rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.release-artist {
+  color: var(--light-text) !important;
+  font-size: 0.95rem !important;
+  padding: 0.5rem 1rem !important;
+  margin: 0 !important;
+  font-weight: 500 !important;
+}
+
+.release-type {
+  color: #888 !important;
+  font-size: 0.8rem !important;
+  padding: 0 1rem 1rem !important;
+  margin: 0 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500 !important;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .artists-showcase {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+  }
+
+  .artist-showcase-card {
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .artists-hero {
+    height: 40vh;
+  }
+
+  .artists-hero .hero-title {
+    font-size: 2rem;
+  }
+
+  .genre-buttons {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding: 0.5rem;
+  }
+
+  .artists-showcase {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .artist-showcase-card {
+    height: 250px;
+  }
+
+  .back-content h3 {
+    font-size: 1rem;
+  }
+
+  .back-content p {
+    font-size: 0.75rem;
+  }
+
+  .featured-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .artists-showcase {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .artist-showcase-card {
+    height: 250px;
+  }
+
+  .card-back {
+    padding: 1rem;
+  }
+
+  .back-content h3 {
+    font-size: 1rem;
+  }
+
+  .back-content p {
+    font-size: 0.75rem;
+  }
+
+  .link-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 0.95rem;
+  }
+
+  .genre-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* Loading Message */
+.loading-message {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--light-text);
+  font-size: 1rem;
+  opacity: 0.8;
+}
+

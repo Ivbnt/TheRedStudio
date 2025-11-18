@@ -1,0 +1,7 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/releases/soundcloud/[username]/route": "app/api/releases/soundcloud/[username]/route.js",
+  "/api/releases/spotify/[artistId]/route": "app/api/releases/spotify/[artistId]/route.js",
+  "/api/route": "app/api/route.js",
+  "/page": "app/page.js"
+}

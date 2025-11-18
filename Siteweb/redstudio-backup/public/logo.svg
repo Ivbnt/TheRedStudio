@@ -1,0 +1,33 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="600" fill="none"/>
+  
+  <!-- Red stylized "red" text -->
+  <g id="red-text">
+    <!-- R -->
+    <path d="M 80 150 L 80 450 M 80 150 L 180 150 Q 220 150 220 190 Q 220 230 180 230 L 80 230 M 180 230 L 260 450" 
+          stroke="#C41E3A" stroke-width="40" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- E -->
+    <path d="M 320 150 L 260 150 L 260 450 L 320 450 M 260 300 L 300 300" 
+          stroke="#C41E3A" stroke-width="40" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- D -->
+    <path d="M 380 150 L 380 450 L 440 450 Q 520 450 520 300 Q 520 150 440 150 L 380 150" 
+          stroke="#C41E3A" stroke-width="40" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  
+  <!-- Stylized squares/pixels on the right -->
+  <g id="pixels">
+    <!-- Main vertical bar -->
+    <rect x="580" y="100" width="60" height="160" fill="#C41E3A"/>
+    
+    <!-- Middle section -->
+    <rect x="560" y="280" width="40" height="50" fill="#C41E3A"/>
+    <rect x="620" y="280" width="40" height="50" fill="#C41E3A"/>
+    <rect x="540" y="350" width="180" height="40" fill="#C41E3A"/>
+    
+    <!-- Bottom section -->
+    <rect x="600" y="420" width="50" height="60" fill="#C41E3A"/>
+  </g>
+</svg>
