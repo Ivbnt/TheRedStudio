@@ -155,47 +155,28 @@ function Artists() {
       {/* Artists Grid */}
       <section className="artists-grid-section">
         <div className="section-container">
-          <div className="artists-showcase">
+          <div className="artists-circles-grid">
             {filteredArtists.map((artist, index) => (
-              <div
-                key={artist.id}
-                className="artist-showcase-card"
-                onMouseEnter={() => setHoveredId(artist.id)}
-                onMouseLeave={() => setHoveredId(null)}
-                style={{ animationDelay: `${index * 0.05}s` }}
-              >
-                <div className="card-inner">
-                  {/* Front */}
-                  <div className="card-front">
-                    <img src={artist.image} alt={artist.name} />
-                    <div className="overlay-effect"></div>
-                    <div className="genre-badge">{artist.genre}</div>
-                  </div>
-
-                  {/* Back */}
-                  <div className={`card-back ${hoveredId === artist.id ? 'visible' : ''}`}>
-                    <div className="back-content">
-                      <h3>{artist.name}</h3>
-                      {artist.bio && <p>{artist.bio}</p>}
-                      <div className="artist-links">
-                        <a href={`https://instagram.com/${artist.instagram}`} target="_blank" rel="noopener noreferrer" className="link-icon">
-                          <span>📱</span>
-                        </a>
-                        {artist.spotify && (
-                          <a href={`https://open.spotify.com/artist/${artist.spotify}`} target="_blank" rel="noopener noreferrer" className="link-icon">
-                            <span>🎵</span>
-                          </a>
-                        )}
-                        <a href={`https://soundcloud.com/${artist.soundcloud}`} target="_blank" rel="noopener noreferrer" className="link-icon">
-                          <span>☁️</span>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+              <div key={artist.id} className="artist-circle-container">
+                <div className="artist-circle">
+                  <img src={artist.image} alt={artist.name} />
+                  <div className="circle-overlay"></div>
                 </div>
-
-                {/* Animated border */}
-                <div className="card-border"></div>
+                <h3 className="artist-name">{artist.name}</h3>
+                <p className="artist-genre">{artist.genre}</p>
+                <div className="artist-social-links">
+                  <a href={`https://instagram.com/${artist.instagram.replace('@', '')}`} target="_blank" rel="noopener noreferrer" className="social-icon instagram-icon">
+                    <img src="/instagram.svg" alt="Instagram" className="social-icon-img" />
+                  </a>
+                  {artist.spotify && (
+                    <a href={`https://open.spotify.com/artist/${artist.spotify}`} target="_blank" rel="noopener noreferrer" className="social-icon">
+                      🎵
+                    </a>
+                  )}
+                  <a href={`https://soundcloud.com/${artist.soundcloud}`} target="_blank" rel="noopener noreferrer" className="social-icon">
+                    ☁️
+                  </a>
+                </div>
               </div>
             ))}
           </div>

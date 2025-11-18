@@ -65,13 +65,148 @@
   padding: 3rem 0;
 }
 
-.artists-showcase {
-  display: flex;
-  flex-wrap: wrap;
+.artists-circles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2.5rem;
   max-width: 1100px;
   margin: 0 auto;
   justify-content: center;
+}
+
+.artist-circle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: cardFadeIn 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.artist-circle {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  border: 3px solid var(--primary-red);
+  transition: var(--transition);
+  position: relative;
+  cursor: pointer;
+}
+
+.artist-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.circle-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, transparent 0%, rgba(196, 30, 58, 0.3) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.artist-circle:hover {
+  box-shadow: 0 0 30px rgba(196, 30, 58, 0.4);
+}
+
+.artist-circle:hover img {
+  transform: scale(1.1);
+}
+
+.artist-circle:hover .circle-overlay {
+  opacity: 1;
+}
+
+.artist-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  color: var(--light-text);
+}
+
+.artist-genre {
+  font-size: 0.9rem;
+  color: var(--primary-red);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 1rem 0;
+}
+
+.artist-social-links {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(196, 30, 58, 0.3), rgba(196, 30, 58, 0.1));
+  border: 1px solid var(--primary-red);
+  border-radius: 50%;
+  transition: var(--transition);
+  text-decoration: none;
+  color: var(--primary-red);
+  box-shadow: 0 4px 12px rgba(196, 30, 58, 0.2);
+  padding: 0;
+  line-height: 0;
+}
+
+.social-icon-img {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  fill: none;
+  transition: var(--transition);
+  flex-shrink: 0;
+  display: block;
+}
+
+.social-icon.instagram-icon {
+  background: linear-gradient(135deg, rgba(196, 30, 58, 0.3), rgba(196, 30, 58, 0.1));
+  border: 1px solid var(--primary-red);
+  box-shadow: 0 4px 12px rgba(196, 30, 58, 0.2);
+}
+
+.social-icon.instagram-icon .social-icon-img {
+  stroke: none;
+  width: 20px;
+  height: 20px;
+}
+
+.social-icon:hover {
+  background: var(--primary-red);
+  color: white;
+  transform: scale(1.25) rotate(12deg);
+  box-shadow: 0 8px 20px rgba(196, 30, 58, 0.4);
+}
+
+.social-icon:hover .social-icon-img {
+  stroke: white;
 }
 
 .artist-showcase-card {
@@ -82,6 +217,7 @@
   animation: cardFadeIn 0.6s ease-out forwards;
   opacity: 0;
   flex-shrink: 0;
+  display: none;
 }
 
 @keyframes cardFadeIn {

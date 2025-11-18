@@ -52,11 +52,18 @@ export async function GET(request: NextRequest) {
 
     const albumsData = await albumsResponse.json()
 
+    // Manual overrides for release types
+    const typeOverrides: { [key: string]: string } = {
+      'BZ TOUT UN LABEL': 'EP',
+    }
+
     const releases = albumsData.items.map((album: any) => {
       let type = 'Album'
       
-      // Determine type based on album_type and track count
-      if (album.album_type === 'single') {
+      // Check if there's a manual override
+      if (typeOverrides[album.name]) {
+        type = typeOverrides[album.name]
+      } else if (album.album_type === 'single') {
         type = 'Single'
       } else if (album.album_type === 'album') {
         // Distinguish between Album and EP based on track count

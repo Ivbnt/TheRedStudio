@@ -260,8 +260,8 @@
 }
 
 .artist-bubble {
-  width: 160px;
-  height: 160px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   overflow: hidden;
   margin-bottom: 1.5rem;

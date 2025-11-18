@@ -59,7 +59,7 @@ function Contact() {
                 <h3>Réseaux Sociaux</h3>
                 <div className="social-links">
                   <a href="https://www.instagram.com/theredstudio.asso/" target="_blank" rel="noopener noreferrer" className="social-btn">
-                    <span className="social-icon">📱</span> Instagram
+                    <img src="/instagram.svg" alt="Instagram" className="social-icon-img" /> Instagram
                   </a>
                 </div>
               </div>
