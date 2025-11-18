@@ -190,16 +190,21 @@ function Home({ onNavigate }: HomeProps) {
           <h2 className="section-title">Prochains Événements</h2>
           <div className="events-grid">
             {events.map((event) => (
-              <div key={event.id} className="event-card">
+              <button 
+                key={event.id} 
+                onClick={() => onNavigate?.('events')}
+                className="event-card event-card-button"
+              >
                 <div className="event-image">
                   <img src={event.image} alt={event.title} />
+                  <div className="event-badge">À venir</div>
                 </div>
                 <div className="event-info">
                   <h3 className="event-title">{event.title}</h3>
                   <p className="event-date">{event.date}</p>
                   <p className="event-artist">{event.artist}</p>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
           <div className="view-all">

@@ -60,9 +60,9 @@ export async function GET(request: NextRequest) {
         type = 'Single'
       } else if (album.album_type === 'album') {
         // Distinguish between Album and EP based on track count
-        // EP typically has 4-7 tracks, Album has 8+
+        // EP typically has 3-10 tracks, Album has 11+
         const trackCount = album.total_tracks || 0
-        if (trackCount >= 4 && trackCount <= 7) {
+        if (trackCount >= 3 && trackCount <= 10) {
           type = 'EP'
         } else {
           type = 'Album'

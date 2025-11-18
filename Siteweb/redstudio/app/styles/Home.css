@@ -153,7 +153,16 @@
   cursor: pointer;
 }
 
-.event-card:hover {
+.event-card-button {
+  background-color: #1a1a1a;
+  border: 1px solid var(--border-color);
+  padding: 0;
+  text-align: left;
+  font-family: inherit;
+}
+
+.event-card:hover,
+.event-card-button:hover {
   border-color: var(--primary-red);
   transform: translateY(-5px);
 }
@@ -171,8 +180,24 @@
   transition: var(--transition);
 }
 
-.event-card:hover .event-image img {
+.event-card:hover .event-image img,
+.event-card-button:hover .event-image img {
   transform: scale(1.05);
+}
+
+.event-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: linear-gradient(135deg, var(--primary-red), #8b151f);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 12px rgba(196, 30, 58, 0.3);
 }
 
 .event-info {
@@ -332,7 +357,7 @@
 
 /* ============ RECENT RELEASES SECTION ============ */
 .releases-section {
-  padding: 4rem 0;
+  padding: 2.5rem 0;
   background: linear-gradient(135deg, rgba(196, 30, 58, 0.05) 0%, transparent 100%);
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
@@ -340,9 +365,9 @@
 
 .releases-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 .release-card {
