@@ -19,59 +19,17 @@ const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 heures
 export async function fetchSpotifyReleases(
   artistId: string
 ): Promise<Release[]> {
-  const cacheKey = `spotify-${artistId}`;
-  const cached = releaseCache.get(cacheKey);
-
-  if (cached && Date.now() - cached.timestamp < CACHE_DURATION) {
-    return cached.data;
-  }
-
-  try {
-    const response = await fetch(
-      `/api/releases/spotify?id=${encodeURIComponent(artistId)}`
-    );
-
-    if (!response.ok) {
-      throw new Error("Failed to fetch from Spotify API");
-    }
-
-    const releases = (await response.json()) as Release[];
-
-    releaseCache.set(cacheKey, { data: releases, timestamp: Date.now() });
-    return releases;
-  } catch (error) {
-    console.error("Error fetching Spotify releases:", error);
-    return [];
-  }
+  // Routes API removed for static export
+  // Return mock data or empty array
+  return [];
 }
 
 export async function fetchSoundCloudReleases(
   username: string
 ): Promise<Release[]> {
-  const cacheKey = `soundcloud-${username}`;
-  const cached = releaseCache.get(cacheKey);
-
-  if (cached && Date.now() - cached.timestamp < CACHE_DURATION) {
-    return cached.data;
-  }
-
-  try {
-    const response = await fetch(
-      `/api/releases/soundcloud?username=${encodeURIComponent(username)}`
-    );
-
-    if (!response.ok) {
-      throw new Error("Failed to fetch from SoundCloud API");
-    }
-
-    const releases = (await response.json()) as Release[];
-
-    releaseCache.set(cacheKey, { data: releases, timestamp: Date.now() });
-    return releases;
-  } catch (error) {
-    console.error("Error fetching SoundCloud releases:", error);
-    return [];
-  }
+  // Routes API removed for static export
+  // Return mock data or empty array
+  return [];
 }
 
 export async function fetchAllArtistReleases(
