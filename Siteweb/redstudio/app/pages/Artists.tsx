@@ -58,7 +58,7 @@ function Artists() {
       name: "Ivane",
       genre: "Pop",
       bio: "Do for love.",
-      image: "https://i1.sndcdn.com/avatars-DfzPSVfodvByHfkU-rPvwYg-t500x500.jpg",
+      image: "https://i1.sndcdn.com/avatars-4rkFmW8Vft47Pqpw-LxBGPQ-t500x500.jpg",
       instagram: "@ivane",
       spotify: "Ivane",
       soundcloud: "user-821023271"

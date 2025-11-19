@@ -57,7 +57,7 @@ function Home({ onNavigate }: HomeProps) {
       id: 3,
       name: "Ivane",
       genre: "Pop",
-      image: "https://i1.sndcdn.com/avatars-DfzPSVfodvByHfkU-rPvwYg-t500x500.jpg",
+      image: "https://i1.sndcdn.com/avatars-4rkFmW8Vft47Pqpw-LxBGPQ-t500x500.jpg",
       spotifyId: "",
       soundcloudUsername: "ivane-music"
     }
