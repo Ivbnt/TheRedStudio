@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react'
 import '../styles/Artists.css'
-import { fetchAllArtistReleases } from '@/lib/releaseService'
+import { fetchAllArtistReleases, type Release } from '@/lib/releaseService'
 import ReleaseCard from '@/app/components/ReleaseCard'
 
 interface Artist {
@@ -13,17 +13,6 @@ interface Artist {
   instagram: string
   spotify: string
   soundcloud: string
-}
-
-interface Release {
-  id: number
-  title: string
-  artist: string
-  type: 'Album' | 'Single'
-  image: string
-  releaseDate: string
-  url: string
-  platform: 'Spotify' | 'SoundCloud'
 }
 
 function Artists() {
