@@ -83,7 +83,7 @@ function Artists() {
           
           // Map the fetched releases to our Release interface
           const mappedReleases = artistReleases.map((release, idx) => ({
-            id: allReleases.length + idx,
+            id: `${artist.id}-${idx}`,
             title: release.title,
             artist: release.artist,
             type: release.type as 'Album' | 'Single',
