@@ -59,8 +59,8 @@ function Contact() {
                 <h3>Réseaux Sociaux</h3>
                 <div className="social-links">
                   <a href="https://www.instagram.com/theredstudio.asso/" target="_blank" rel="noopener noreferrer" className="social-btn">
+                    Instagram
                   </a>
-                  <h1>Instagram</h1>
                 </div>
               </div>
             </div>
