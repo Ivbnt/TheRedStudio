@@ -60,6 +60,7 @@ function Contact() {
                 <div className="social-links">
                   <a href="https://www.instagram.com/theredstudio.asso/" target="_blank" rel="noopener noreferrer" className="social-btn">
                   </a>
+                  <h1>Instagram</h1>
                 </div>
               </div>
             </div>

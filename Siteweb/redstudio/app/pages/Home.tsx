@@ -16,7 +16,7 @@ function Home({ onNavigate }: HomeProps) {
     {
       id: 1,
       title: "Red Festival",
-      date: "15 mai 2026",
+      date: "29 mai 2026",
       time: "18:00",
       artist: "Local Artists",
       description: "Festival d'artiste bordelais réunissant divers talents émergents.",
