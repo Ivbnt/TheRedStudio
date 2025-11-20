@@ -39,7 +39,7 @@ function Artists() {
       bio: "",
       image: "https://i1.sndcdn.com/avatars-Tb0Ds5cskz6haord-1gs3xQ-t500x500.jpg",
       instagram: "@vins",
-      spotify: "Vin's",
+      spotify: "",
       soundcloud: "h2lios"
     },
     {
@@ -49,7 +49,7 @@ function Artists() {
       bio: "Do for love.",
       image: "https://i1.sndcdn.com/avatars-4rkFmW8Vft47Pqpw-LxBGPQ-t500x500.jpg",
       instagram: "@ivane",
-      spotify: "Ivane",
+      spotify: "",
       soundcloud: "user-821023271"
     },
     {
