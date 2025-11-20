@@ -95,6 +95,17 @@
   }
 }
 
+@keyframes scrollHint {
+  0%, 100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(8px);
+    opacity: 0.6;
+  }
+}
+
 .artist-circle {
   width: 180px;
   height: 180px;
@@ -662,6 +673,10 @@
     width: 140px;
     min-width: 140px;
   }
+
+  .artist-circle-container:first-child {
+    animation: scrollHint 2s ease-in-out infinite;
+  }
   
   .artist-circle {
     width: 120px;
@@ -695,6 +710,10 @@
   .featured-card {
     flex-shrink: 0;
     width: 160px;
+  }
+
+  .featured-card:first-child {
+    animation: scrollHint 2s ease-in-out infinite;
   }
 }
 

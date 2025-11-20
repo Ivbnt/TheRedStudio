@@ -131,7 +131,16 @@
   }
 }
 
-/* EVENTS SECTION */
+@keyframes scrollHint {
+  0%, 100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(8px);
+    opacity: 0.6;
+  }
+}
 .events-section {
   padding: 5rem 0;
   background-color: var(--dark-bg);
@@ -389,6 +398,10 @@
     min-width: 150px;
   }
 
+  .artist-card:first-child {
+    animation: scrollHint 2s ease-in-out infinite;
+  }
+
   .artist-bubble {
     width: 120px;
     height: 120px;
@@ -425,6 +438,10 @@
     min-width: 280px;
   }
 
+  .event-card:first-child {
+    animation: scrollHint 2s ease-in-out infinite;
+  }
+
   /* Carousel for Releases */
   .releases-grid {
     display: flex;
@@ -454,6 +471,10 @@
     flex-shrink: 0;
     width: 140px;
     min-width: 140px;
+  }
+
+  .release-card-modern:first-child {
+    animation: scrollHint 2s ease-in-out infinite;
   }
 
   .cta-button {
