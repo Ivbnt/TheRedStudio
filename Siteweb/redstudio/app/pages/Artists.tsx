@@ -96,7 +96,7 @@ function Artists() {
           allReleases.push(...mappedReleases)
         }
         
-        // Sort by date (newest first) and take top 5
+        // Sort by date (newest first) and take top 6
         allReleases.sort((a, b) => {
           // Parse dates - try to extract year first
           const getYear = (dateStr: string) => {
@@ -106,7 +106,7 @@ function Artists() {
           return getYear(b.releaseDate) - getYear(a.releaseDate)
         })
         
-        setRecentReleases(allReleases.slice(0, 5))
+        setRecentReleases(allReleases.slice(0, 6))
       } catch (error) {
         console.error('Error loading releases:', error)
         // Keep the empty state if there's an error
