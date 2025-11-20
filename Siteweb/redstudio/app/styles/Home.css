@@ -449,22 +449,10 @@
     border-radius: 2px;
   }
 
-  .release-card {
+  .release-card-modern {
     flex-shrink: 0;
-    width: 160px;
-    min-width: 160px;
-  }
-
-  .release-image {
-    height: 160px;
-  }
-
-  .release-info {
-    padding: 1rem;
-  }
-
-  .release-title {
-    font-size: 0.9rem;
+    width: 140px;
+    min-width: 140px;
   }
 
   .cta-button {
@@ -487,8 +475,9 @@
     width: 240px;
   }
 
-  .release-card {
-    width: 140px;
+  .release-card-modern {
+    width: 130px;
+    min-width: 130px;
   }
 }
 
