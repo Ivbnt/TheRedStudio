@@ -15,6 +15,7 @@
   position: sticky;
   top: 80px;
   z-index: 50;
+  overflow: hidden;
 }
 
 .filters {
@@ -227,6 +228,10 @@
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
+  .filters-section {
+    padding: 1.5rem 0;
+  }
+  
   .events-list {
     grid-template-columns: 1fr;
   }
@@ -266,6 +271,11 @@
     font-size: 0.75rem;
     flex-shrink: 0;
     white-space: nowrap;
+  }
+  
+  .filter-btn.active {
+    background-color: var(--primary-red);
+    color: white;
   }
   
   .filter-btn.active {
