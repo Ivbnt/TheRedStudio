@@ -18,7 +18,7 @@ const RELEASES_DATA: Release[] = [
     artist: "DN$",
     type: "EP",
     image: "https://i.scdn.co/image/ab67616d00001e021be0c45be63e1e05c3a6c93a",
-    releaseDate: "September 2025",
+    releaseDate: "2025-09-05",
     url: "https://open.spotify.com/album/6Obe1kQblkh5NP8ln4EtPU",
     platform: "Spotify",
   },
