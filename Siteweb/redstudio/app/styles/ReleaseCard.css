@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  min-height: 320px;
   background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
   border: 1px solid #222;
   border-radius: 12px;
@@ -103,6 +104,7 @@
   flex-direction: column;
   flex-grow: 1;
   gap: 0.5rem;
+  overflow: hidden;
 }
 
 /* META BADGES */
