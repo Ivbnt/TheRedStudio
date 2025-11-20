@@ -366,9 +366,7 @@
     -webkit-overflow-scrolling: touch;
     grid-template-columns: unset;
     padding: 0 0 1rem 0;
-    margin: 0 -1.5rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    margin: 0;
   }
 
   .artists-grid::-webkit-scrollbar {
@@ -387,6 +385,7 @@
   .artist-card {
     flex-shrink: 0;
     width: 150px;
+    min-width: 150px;
   }
 
   .artist-bubble {
@@ -403,9 +402,7 @@
     -webkit-overflow-scrolling: touch;
     grid-template-columns: unset;
     padding: 0 0 1rem 0;
-    margin: 0 -1.5rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    margin: 0;
   }
 
   .events-grid::-webkit-scrollbar {
@@ -424,6 +421,7 @@
   .event-card {
     flex-shrink: 0;
     width: 280px;
+    min-width: 280px;
   }
 
   /* Carousel for Releases */
@@ -435,9 +433,7 @@
     -webkit-overflow-scrolling: touch;
     grid-template-columns: unset;
     padding: 0 0 1rem 0;
-    margin: 0 -1.5rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    margin: 0;
   }
 
   .releases-grid::-webkit-scrollbar {
@@ -456,6 +452,7 @@
   .release-card {
     flex-shrink: 0;
     width: 160px;
+    min-width: 160px;
   }
 
   .release-image {

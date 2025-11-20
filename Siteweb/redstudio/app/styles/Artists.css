@@ -626,6 +626,44 @@
 }
 
 @media (max-width: 600px) {
+  /* Carousel for Artists */
+  .artists-circles-grid {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 0 1rem 0;
+    margin: 0;
+    grid-template-columns: unset;
+    max-width: unset;
+    justify-content: flex-start;
+  }
+  
+  .artists-circles-grid::-webkit-scrollbar {
+    height: 4px;
+  }
+  
+  .artists-circles-grid::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  .artists-circles-grid::-webkit-scrollbar-thumb {
+    background: var(--primary-red);
+    border-radius: 2px;
+  }
+  
+  .artist-circle-container {
+    flex-shrink: 0;
+    width: 140px;
+    min-width: 140px;
+  }
+  
+  .artist-circle {
+    width: 120px;
+    height: 120px;
+  }
+  
   .featured-grid {
     display: flex;
     gap: 1.5rem;
