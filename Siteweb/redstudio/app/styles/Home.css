@@ -333,20 +333,141 @@
   .artists-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .releases-grid {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .release-image {
+    height: 160px;
+  }
+
+  .release-info {
+    padding: 1rem;
+  }
+
+  .release-title {
+    font-size: 0.9rem;
+  }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .hero-title {
     font-size: 1.8rem;
   }
 
+  /* Carousel for Artists */
   .artists-grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    grid-template-columns: unset;
+    padding: 0 0 1rem 0;
+    margin: 0 -1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .artists-grid::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .artists-grid::-webkit-scrollbar-track {
+    background: #1a1a1a;
+  }
+
+  .artists-grid::-webkit-scrollbar-thumb {
+    background: var(--primary-red);
+    border-radius: 2px;
+  }
+
+  .artist-card {
+    flex-shrink: 0;
+    width: 150px;
   }
 
   .artist-bubble {
     width: 120px;
     height: 120px;
+  }
+
+  /* Carousel for Events */
+  .events-grid {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    grid-template-columns: unset;
+    padding: 0 0 1rem 0;
+    margin: 0 -1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .events-grid::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .events-grid::-webkit-scrollbar-track {
+    background: #1a1a1a;
+  }
+
+  .events-grid::-webkit-scrollbar-thumb {
+    background: var(--primary-red);
+    border-radius: 2px;
+  }
+
+  .event-card {
+    flex-shrink: 0;
+    width: 280px;
+  }
+
+  /* Carousel for Releases */
+  .releases-grid {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    grid-template-columns: unset;
+    padding: 0 0 1rem 0;
+    margin: 0 -1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .releases-grid::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .releases-grid::-webkit-scrollbar-track {
+    background: #1a1a1a;
+  }
+
+  .releases-grid::-webkit-scrollbar-thumb {
+    background: var(--primary-red);
+    border-radius: 2px;
+  }
+
+  .release-card {
+    flex-shrink: 0;
+    width: 160px;
+  }
+
+  .release-image {
+    height: 160px;
+  }
+
+  .release-info {
+    padding: 1rem;
+  }
+
+  .release-title {
+    font-size: 0.9rem;
   }
 
   .cta-button {
@@ -355,19 +476,23 @@
   }
 }
 
-/* ============ RECENT RELEASES SECTION ============ */
-.releases-section {
-  padding: 2.5rem 0;
-  background: linear-gradient(135deg, rgba(196, 30, 58, 0.05) 0%, transparent 100%);
-  border-top: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
-}
+@media (max-width: 380px) {
+  .artist-bubble {
+    width: 100px;
+    height: 100px;
+  }
 
-.releases-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1.5rem;
+  .artist-card {
+    width: 130px;
+  }
+
+  .event-card {
+    width: 240px;
+  }
+
+  .release-card {
+    width: 140px;
+  }
 }
 
 .release-card {
