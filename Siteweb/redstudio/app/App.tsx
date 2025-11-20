@@ -43,7 +43,7 @@ function App() {
         <div className="section-container">
           <p>&copy; 2025 The Red Studio. Tous droits réservés.</p>
           <div className="footer-links">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://instagram.com/theredstudio.asso/" target="_blank" rel="noopener noreferrer">Instagram</a>
             <button onClick={() => setCurrentPage('contact')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', textDecoration: 'underline' }}>Contact</button>
           </div>
         </div>
