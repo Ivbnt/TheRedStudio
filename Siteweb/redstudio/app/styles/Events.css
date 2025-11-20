@@ -304,6 +304,12 @@
   }
 }
 
+@media (max-width: 600px) {
+  .filters-section {
+    display: none;
+  }
+}
+
 @media (max-width: 480px) {
   .events-page {
     padding-top: 0;

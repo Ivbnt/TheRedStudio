@@ -626,6 +626,10 @@
 }
 
 @media (max-width: 600px) {
+  .genre-filter-section {
+    display: none;
+  }
+  
   /* Carousel for Artists */
   .artists-circles-grid {
     display: flex;
