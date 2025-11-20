@@ -2,20 +2,10 @@
 import { useEffect, useRef, useState } from 'react'
 import '../styles/Home.css'
 import ReleaseCard from '@/app/components/ReleaseCard'
+import { fetchAllArtistReleases, type Release } from '@/lib/releaseService'
 
 interface HomeProps {
   onNavigate?: (page: 'events' | 'artists') => void;
-}
-
-interface Release {
-  id: string;
-  title: string;
-  artist: string;
-  type: "Album" | "Single" | "Playlist" | "EP";
-  image: string;
-  releaseDate: string;
-  url: string;
-  platform: "Spotify" | "SoundCloud";
 }
 
 function Home({ onNavigate }: HomeProps) {
@@ -51,7 +41,7 @@ function Home({ onNavigate }: HomeProps) {
       genre: "Indie",
       image: "https://i1.sndcdn.com/avatars-Tb0Ds5cskz6haord-1gs3xQ-t500x500.jpg",
       spotifyId: "",
-      soundcloudUsername: "vins-artist"
+      soundcloudUsername: "h2lios"
     },
     {
       id: 3,
@@ -59,7 +49,15 @@ function Home({ onNavigate }: HomeProps) {
       genre: "Pop",
       image: "https://i1.sndcdn.com/avatars-4rkFmW8Vft47Pqpw-LxBGPQ-t500x500.jpg",
       spotifyId: "",
-      soundcloudUsername: "ivane-music"
+      soundcloudUsername: "user-821023271"
+    },
+    {
+      id: 4,
+      name: "Izadora Bezie",
+      genre: "Pop",
+      image: "https://i1.sndcdn.com/avatars-000589148493-7eh83t-t500x500.jpg",
+      spotifyId: "",
+      soundcloudUsername: "izadora-bezie"
     }
   ]
 
@@ -105,34 +103,23 @@ function Home({ onNavigate }: HomeProps) {
         setLoadingReleases(true)
         const allReleases: Release[] = []
 
-        // Fetch from Spotify and SoundCloud for each artist
+        // Fetch releases for each artist
         for (const artist of artists) {
-          try {
-            // Fetch from Spotify
-            if (artist.spotifyId) {
-              const spotifyRes = await fetch(`/api/releases/spotify?id=${artist.spotifyId}`)
-              if (spotifyRes.ok) {
-                const spotifyReleases = await spotifyRes.json()
-                allReleases.push(...spotifyReleases)
-              }
-            }
-
-            // Fetch from SoundCloud
-            if (artist.soundcloudUsername) {
-              const scRes = await fetch(`/api/releases/soundcloud?username=${artist.soundcloudUsername}`)
-              if (scRes.ok) {
-                const scReleases = await scRes.json()
-                allReleases.push(...scReleases)
-              }
-            }
-          } catch (error) {
-            console.error(`Error fetching releases for ${artist.name}:`, error)
-          }
+          const artistReleases = await fetchAllArtistReleases(
+            artist.name,
+            artist.spotifyId,
+            artist.soundcloudUsername
+          )
+          allReleases.push(...artistReleases)
         }
 
         // Sort by date (most recent first) and take top 6
         const sorted = allReleases
-          .sort((a, b) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime())
+          .sort((a, b) => {
+            const dateA = new Date(a.releaseDate).getTime()
+            const dateB = new Date(b.releaseDate).getTime()
+            return dateB - dateA
+          })
           .slice(0, 6)
 
         setRecentReleases(sorted)
@@ -145,15 +132,6 @@ function Home({ onNavigate }: HomeProps) {
 
     fetchAllReleases()
   }, [])
-
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString)
-    return date.toLocaleDateString('fr-FR', { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
-    })
-  }
 
   return (
     <div className="home">
