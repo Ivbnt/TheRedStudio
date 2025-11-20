@@ -320,6 +320,20 @@
   text-decoration: underline;
 }
 
+/* RELEASES SECTION */
+.releases-section {
+  padding: 5rem 0;
+  background-color: var(--dark-bg);
+  border-top: 1px solid var(--border-color);
+}
+
+.releases-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
   .hero-title {
@@ -334,21 +348,8 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .releases-grid {
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .release-image {
-    height: 160px;
-  }
-
-  .release-info {
-    padding: 1rem;
-  }
-
-  .release-title {
-    font-size: 0.9rem;
+  .events-grid {
+    grid-template-columns: 1fr;
   }
 }
 
