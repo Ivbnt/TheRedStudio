@@ -154,9 +154,6 @@ function Artists() {
                 <h3 className="artist-name">{artist.name}</h3>
                 <p className="artist-genre">{artist.genre}</p>
                 <div className="artist-social-links">
-                  <a href={`https://instagram.com/${artist.instagram.replace('@', '')}`} target="_blank" rel="noopener noreferrer" className="social-icon instagram-icon">
-                    <img src="/instagram.svg" alt="Instagram" className="social-icon-img" />
-                  </a>
                   {artist.spotify && (
                     <a href={`https://open.spotify.com/artist/${artist.spotify}`} target="_blank" rel="noopener noreferrer" className="social-icon">
                       🎵
