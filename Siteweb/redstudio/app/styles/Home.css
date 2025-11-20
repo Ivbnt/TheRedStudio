@@ -638,3 +638,38 @@
     height: 180px;
   }
 }
+
+@media (max-width: 380px) {
+  .artists-grid {
+    gap: 1rem;
+    padding-left: 1rem;
+    margin-left: -1rem;
+    padding-right: 1rem;
+    margin-right: -1rem;
+  }
+  
+  .artist-card {
+    width: 120px;
+  }
+  
+  .artist-bubble {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .events-grid {
+    gap: 1rem;
+    padding-left: 1rem;
+    margin-left: -1rem;
+    padding-right: 1rem;
+    margin-right: -1rem;
+  }
+  
+  .event-card {
+    width: 240px;
+  }
+  
+  .releases-grid {
+    gap: 1rem;
+  }
+}

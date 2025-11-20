@@ -277,11 +277,6 @@
     background-color: var(--primary-red);
     color: white;
   }
-  
-  .filter-btn.active {
-    background-color: var(--primary-red);
-    color: white;
-  }
 }
 
 @media (max-width: 480px) {
@@ -322,5 +317,21 @@
   .reserve-btn-modern {
     padding: 0.75rem 1.2rem;
     font-size: 0.85rem;
+  }
+  
+  .filters-section {
+    padding: 1rem 0;
+  }
+  
+  .filter-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .filter-btn {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.65rem;
   }
 }

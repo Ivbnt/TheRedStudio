@@ -604,6 +604,10 @@
 }
 
 @media (max-width: 480px) {
+  .genre-filter-section {
+    padding: 1rem 0;
+  }
+  
   .artists-showcase {
     gap: 1.5rem;
   }
@@ -632,8 +636,15 @@
   }
 
   .genre-btn {
-    padding: 0.6rem 1rem;
-    font-size: 0.75rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .genre-btn {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.65rem;
   }
 }
 
