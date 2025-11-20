@@ -98,12 +98,9 @@ function Artists() {
         
         // Sort by date (newest first) and take top 6
         allReleases.sort((a, b) => {
-          // Parse dates - try to extract year first
-          const getYear = (dateStr: string) => {
-            const yearMatch = dateStr.match(/20\d{2}/)
-            return yearMatch ? parseInt(yearMatch[0]) : 0
-          }
-          return getYear(b.releaseDate) - getYear(a.releaseDate)
+          const dateA = new Date(a.releaseDate).getTime()
+          const dateB = new Date(b.releaseDate).getTime()
+          return dateB - dateA
         })
         
         setRecentReleases(allReleases.slice(0, 6))
