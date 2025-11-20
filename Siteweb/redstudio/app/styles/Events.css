@@ -242,12 +242,35 @@
   .filters {
     justify-content: flex-start;
     overflow-x: auto;
-    padding: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    padding: 0.5rem 1rem;
+    margin: 0 -1rem;
+  }
+  
+  .filters::-webkit-scrollbar {
+    height: 4px;
+  }
+  
+  .filters::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  .filters::-webkit-scrollbar-thumb {
+    background: var(--primary-red);
+    border-radius: 2px;
   }
 
   .filter-btn {
     padding: 0.6rem 1.2rem;
     font-size: 0.75rem;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+  
+  .filter-btn.active {
+    background-color: var(--primary-red);
+    color: white;
   }
 }
 

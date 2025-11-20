@@ -547,7 +547,33 @@
   .genre-buttons {
     justify-content: flex-start;
     overflow-x: auto;
-    padding: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    padding: 0.5rem 1rem;
+    margin: 0 -1rem;
+  }
+  
+  .genre-buttons::-webkit-scrollbar {
+    height: 4px;
+  }
+  
+  .genre-buttons::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  .genre-buttons::-webkit-scrollbar-thumb {
+    background: var(--primary-red);
+    border-radius: 2px;
+  }
+  
+  .genre-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+  
+  .genre-btn.active {
+    background-color: var(--primary-red);
+    color: white;
   }
 
   .artists-showcase {
