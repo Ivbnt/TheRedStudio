@@ -48,7 +48,7 @@ function Home({ onNavigate }: HomeProps) {
     {
       id: 2,
       name: "Vin's",
-      genre: "Indy",
+      genre: "Indie",
       image: "https://i1.sndcdn.com/avatars-Tb0Ds5cskz6haord-1gs3xQ-t500x500.jpg",
       spotifyId: "",
       soundcloudUsername: "vins-artist"

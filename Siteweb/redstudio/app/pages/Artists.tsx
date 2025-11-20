@@ -35,7 +35,7 @@ function Artists() {
     {
       id: 2,
       name: "Vin's",
-      genre: "Indy",
+      genre: "Indie",
       bio: "",
       image: "https://i1.sndcdn.com/avatars-Tb0Ds5cskz6haord-1gs3xQ-t500x500.jpg",
       instagram: "@vins",
@@ -64,7 +64,7 @@ function Artists() {
     }
   ]
 
-  const genres = ['Tous', 'Rap', 'Pop', 'Indy']
+  const genres = ['Tous', 'Rap', 'Pop', 'Indie']
 
   // Load releases from all artists on component mount
   useEffect(() => {
