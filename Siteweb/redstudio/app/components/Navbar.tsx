@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import './Navbar.css';
 
 type PageType = 'home' | 'events' | 'artists' | 'contact';
@@ -10,19 +11,39 @@ interface NavbarProps {
 }
 
 function Navbar({ currentPage, setCurrentPage }: NavbarProps) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleNavigate = (page: PageType) => {
+    setCurrentPage(page);
+    setIsMenuOpen(false);
+  };
+
   return (
     <nav className="navbar">
       <div className="nav-container">
         <button 
-          onClick={() => setCurrentPage('home')} 
+          onClick={() => handleNavigate('home')} 
           className="nav-logo"
         >
           <img src="/logo.png" alt="The Red Studio" className="logo-image" />
         </button>
-        <ul className="nav-menu">
+        
+        {/* Menu Burger Button */}
+        <button 
+          className={`burger-menu ${isMenuOpen ? 'active' : ''}`}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        {/* Navigation Menu */}
+        <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
           <li>
             <button 
-              onClick={() => setCurrentPage('home')}
+              onClick={() => handleNavigate('home')}
               className={currentPage === 'home' ? 'active' : ''}
             >
               Accueil
@@ -30,7 +51,7 @@ function Navbar({ currentPage, setCurrentPage }: NavbarProps) {
           </li>
           <li>
             <button 
-              onClick={() => setCurrentPage('events')}
+              onClick={() => handleNavigate('events')}
               className={currentPage === 'events' ? 'active' : ''}
             >
               Événements
@@ -38,7 +59,7 @@ function Navbar({ currentPage, setCurrentPage }: NavbarProps) {
           </li>
           <li>
             <button 
-              onClick={() => setCurrentPage('artists')}
+              onClick={() => handleNavigate('artists')}
               className={currentPage === 'artists' ? 'active' : ''}
             >
               Artistes
@@ -46,7 +67,7 @@ function Navbar({ currentPage, setCurrentPage }: NavbarProps) {
           </li>
           <li>
             <button 
-              onClick={() => setCurrentPage('contact')}
+              onClick={() => handleNavigate('contact')}
               className={currentPage === 'contact' ? 'active' : ''}
             >
               Contact
