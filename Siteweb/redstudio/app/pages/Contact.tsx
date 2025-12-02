@@ -48,7 +48,7 @@ function Contact() {
                 </div>
                 <h3>Email</h3>
                 <p>
-                  <a href="mailto:contact@redstudio.fr">Theredstudio33@gmail.com</a><br />
+                  <a href="mailto:contact@redstudio.fr">contact@theredstudio.fr</a><br />
                 </p>
               </div>
 
