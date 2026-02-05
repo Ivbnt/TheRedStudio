@@ -15,14 +15,14 @@ function Home({ onNavigate }: HomeProps) {
   const events = [
     {
       id: 1,
-      title: "Red Festival",
-      date: "29 mai 2026",
-      time: "18:00",
-      artist: "Local Artists",
-      description: "Festival d'artiste bordelais réunissant divers talents émergents.",
+      title: "RedCat Concert",
+      date: "7 février 2026",
+      time: "20h - 22h",
+      artist: "V/N S - DNS - BOYO",
+      description: "Soirée RedCat avec V/N S, DNS et BOYO au Cerf Volant.",
       image: "/images/events/Vlisse.jpg",
       category: "concert",
-      location: "Plaine de Barbanac "
+      location: "7 Rue du Cerf Volant, 33000 Bordeaux"
     }
   ]
 

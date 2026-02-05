@@ -39,7 +39,7 @@ function Events() {
       time: "20h - 22h",
       artist: "V/N S - DNS - BOYO",
       description: "Soirée RedCat avec V/N S, DNS et BOYO au Cerf Volant.",
-      image: "/images/events/redcat-concert.jpg",
+      image: "/images/events/Vlisse.jpg",
       category: "concert",
       location: "7 Rue du Cerf Volant, 33000 Bordeaux",
       lineup: [
@@ -48,18 +48,6 @@ function Events() {
         { name: "BOYO", duration: "40 minutes", order: 3, hasProfile: false }
       ],
       details: "Une soirée exceptionnelle avec trois artistes talentueux. Vin's ouvrira le bal en première partie, suivi de DN$ pour un set de 40 minutes, et BOYO clôturera la soirée avec 40 minutes de performance."
-    },
-    {
-      id: 2,
-      title: "Red Festival",
-      date: "29 mai 2026",
-      time: "18:00 - 02:00",
-      artist: "Local Artists",
-      description: "Festival d'artiste bordelais réunissant divers talents émergents.",
-      image: "/images/events/Vlisse.jpg",
-      category: "concert",
-      location: "Plaine de Barbanac",
-      details: "Un festival incontournable réunissant les meilleurs artistes locaux de Bordeaux. Une journée entière de musique, de découvertes et de rencontres dans un cadre exceptionnel."
     }
   ]
 
