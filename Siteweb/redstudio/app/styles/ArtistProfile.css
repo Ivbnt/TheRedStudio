@@ -1,0 +1,369 @@
+@import './shared.css';
+
+/* ============ ARTIST PROFILE PAGE ============ */
+
+.artist-profile {
+  min-height: 100vh;
+  background-color: var(--dark-bg);
+}
+
+/* HEADER WITH BACK BUTTON */
+.profile-header {
+  padding: 2rem 0 1rem;
+  background-color: var(--dark-bg);
+}
+
+.back-button {
+  background-color: transparent;
+  color: var(--light-text);
+  border: 1px solid var(--border-color);
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transition);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.back-button:hover {
+  border-color: var(--primary-red);
+  color: var(--primary-red);
+  transform: translateX(-5px);
+}
+
+/* HERO SECTION */
+.profile-hero {
+  padding: 3rem 0 4rem;
+  background: linear-gradient(180deg, var(--dark-bg) 0%, rgba(20, 20, 20, 0.95) 100%);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.hero-image-container {
+  position: relative;
+  width: 100%;
+  max-width: 350px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--primary-red);
+  box-shadow: 0 10px 40px rgba(196, 30, 58, 0.3);
+  margin: 0 auto;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.hero-image-container:hover .hero-image {
+  transform: scale(1.1);
+}
+
+.hero-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, transparent 0%, rgba(196, 30, 58, 0.2) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.hero-image-container:hover .hero-image-overlay {
+  opacity: 1;
+}
+
+.hero-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.artist-title {
+  font-size: 4rem;
+  font-weight: 900;
+  color: var(--light-text);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--light-text) 0%, var(--primary-red) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.artist-genre-tag {
+  font-size: 1.1rem;
+  color: var(--secondary-text);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+.artist-social-links-hero {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.8rem 1.5rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  border-radius: 0;
+  color: var(--light-text);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: var(--transition);
+}
+
+.social-link:hover {
+  background-color: var(--primary-red);
+  border-color: var(--primary-red);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 20px rgba(196, 30, 58, 0.4);
+}
+
+.social-icon {
+  font-size: 1.3rem;
+}
+
+.social-label {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.85rem;
+}
+
+/* BIOGRAPHY SECTION */
+.profile-bio-section {
+  padding: 4rem 0;
+  background-color: var(--dark-bg);
+}
+
+.bio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.bio-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  padding: 2rem;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.bio-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 0;
+  background-color: var(--primary-red);
+  transition: height 0.3s ease;
+}
+
+.bio-card:hover::before {
+  height: 100%;
+}
+
+.bio-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--primary-red);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.bio-card.full-width {
+  grid-column: 1 / -1;
+}
+
+.bio-card-title {
+  color: var(--primary-red);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.8rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.bio-card-text {
+  color: var(--secondary-text);
+  font-size: 1rem;
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* RELEASES SECTION */
+.profile-releases-section {
+  padding: 4rem 0;
+  background: linear-gradient(180deg, var(--dark-bg) 0%, rgba(15, 15, 15, 1) 100%);
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--light-text);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 3rem;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--primary-red), transparent);
+}
+
+.releases-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.loading-message {
+  text-align: center;
+  color: var(--secondary-text);
+  font-size: 1.1rem;
+  padding: 3rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .hero-info {
+    align-items: center;
+  }
+
+  .artist-social-links-hero {
+    justify-content: center;
+  }
+
+  .artist-title {
+    font-size: 3rem;
+  }
+
+  .hero-image-container {
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-header {
+    padding: 1.5rem 0 0.5rem;
+  }
+
+  .profile-hero {
+    padding: 2rem 0 3rem;
+  }
+
+  .artist-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-image-container {
+    max-width: 220px;
+  }
+
+  .bio-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .bio-card {
+    padding: 1.5rem;
+  }
+
+  .bio-card.full-width {
+    grid-column: 1;
+  }
+
+  .releases-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .artist-social-links-hero {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .social-link {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .profile-bio-section,
+  .profile-releases-section {
+    padding: 3rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .artist-title {
+    font-size: 2rem;
+  }
+
+  .hero-image-container {
+    max-width: 180px;
+  }
+
+  .back-button {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.8rem;
+  }
+
+  .section-title {
+    font-size: 1.7rem;
+  }
+
+  .releases-grid {
+    grid-template-columns: 1fr;
+  }
+}

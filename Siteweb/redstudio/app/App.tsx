@@ -5,17 +5,37 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Events from './pages/Events';
 import Artists from './pages/Artists';
+import ArtistProfile from './pages/ArtistProfile';
 import Contact from './pages/Contact';
 import './App.css';
 
 type PageType = 'home' | 'events' | 'artists' | 'contact';
+type ExtendedPageType = PageType | 'artist-profile';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<PageType>('home');
+  const [currentPage, setCurrentPage] = useState<ExtendedPageType>('home');
+  const [selectedArtistId, setSelectedArtistId] = useState<number | null>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [currentPage]);
+
+  const handleArtistClick = (artistId: number) => {
+    setSelectedArtistId(artistId);
+    setCurrentPage('artist-profile');
+  };
+
+  const handleBackToArtists = () => {
+    setCurrentPage('artists');
+    setSelectedArtistId(null);
+  };
+
+  const handleNavbarPageChange = (page: PageType) => {
+    setCurrentPage(page);
+    if (page !== 'artists') {
+      setSelectedArtistId(null);
+    }
+  };
 
   const renderPage = () => {
     switch (currentPage) {
@@ -24,7 +44,13 @@ function App() {
       case 'events':
         return <Events />;
       case 'artists':
-        return <Artists />;
+        return <Artists onArtistClick={handleArtistClick} />;
+      case 'artist-profile':
+        return selectedArtistId ? (
+          <ArtistProfile artistId={selectedArtistId} onBack={handleBackToArtists} />
+        ) : (
+          <Artists onArtistClick={handleArtistClick} />
+        );
       case 'contact':
         return <Contact />;
       default:
@@ -34,7 +60,10 @@ function App() {
 
   return (
     <>
-      <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      <Navbar 
+        currentPage={currentPage === 'artist-profile' ? 'artists' : currentPage} 
+        setCurrentPage={handleNavbarPageChange} 
+      />
       <main className="page-content">
         {renderPage()}
       </main>

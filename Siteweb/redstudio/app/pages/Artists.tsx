@@ -15,7 +15,11 @@ interface Artist {
   soundcloud: string
 }
 
-function Artists() {
+interface ArtistsProps {
+  onArtistClick?: (artistId: number) => void
+}
+
+function Artists({ onArtistClick }: ArtistsProps = {}) {
   const [hoveredId, setHoveredId] = useState<number | null>(null)
   const [selectedGenre, setSelectedGenre] = useState('all')
   const [recentReleases, setRecentReleases] = useState<Release[]>([])
@@ -144,7 +148,11 @@ function Artists() {
           <div className="artists-circles-grid">
             {filteredArtists.map((artist, index) => (
               <div key={artist.id} className="artist-circle-container">
-                <div className="artist-circle">
+                <div 
+                  className="artist-circle"
+                  onClick={() => onArtistClick && onArtistClick(artist.id)}
+                  style={{ cursor: onArtistClick ? 'pointer' : 'default' }}
+                >
                   <img src={artist.image} alt={artist.name} />
                   <div className="circle-overlay"></div>
                 </div>

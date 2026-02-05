@@ -1,6 +1,15 @@
 'use client';
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import '../styles/Events.css'
+
+interface Artist {
+  name: string
+  duration: string
+  order: number
+  hasProfile: boolean
+  profileUrl?: string
+}
 
 interface Event {
   id: number
@@ -12,23 +21,33 @@ interface Event {
   image: string
   category: string
   location: string
+  lineup?: Artist[]
+  details?: string
 }
 
 function Events() {
+  const router = useRouter()
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [filteredEvents, setFilteredEvents] = useState<Event[]>([])
+  const [selectedEvent, setSelectedEvent] = useState<Event | null>(null)
 
   const events: Event[] = [
     {
       id: 1,
-      title: "Red Festival",
-      date: "29 mai 2026",
-      time: "18:00",
-      artist: "Local Artists",
-      description: "Festival d'artiste bordelais réunissant divers talents émergents.",
-      image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=500&fit=crop",
+      title: "RedCat Concert",
+      date: "7 février 2026",
+      time: "20h - 22h",
+      artist: "V/N S - DNS - BOYO",
+      description: "Soirée RedCat avec V/N S, DNS et BOYO au Cerf Volant.",
+      image: "/images/events/redcat-concert.jpg",
       category: "concert",
-      location: "Plaine de Barbanac "
+      location: "7 Rue du Cerf Volant, 33000 Bordeaux",
+      lineup: [
+        { name: "Vin's", duration: "Première partie", order: 1, hasProfile: true, profileUrl: "/artists#vins" },
+        { name: "DN$", duration: "40 minutes", order: 2, hasProfile: true, profileUrl: "/artists#dns" },
+        { name: "BOYO", duration: "40 minutes", order: 3, hasProfile: false }
+      ],
+      details: "Une soirée exceptionnelle avec trois artistes talentueux. Vin's ouvrira le bal en première partie, suivi de DN$ pour un set de 40 minutes, et BOYO clôturera la soirée avec 40 minutes de performance."
     }
   ]
 
@@ -47,6 +66,21 @@ function Events() {
     { id: 'workshop', label: 'Ateliers' },
     { id: 'jam', label: 'Jam Night' }
   ]
+
+  const handleEventClick = (event: Event) => {
+    setSelectedEvent(event)
+  }
+
+  const closeModal = () => {
+    setSelectedEvent(null)
+  }
+
+  const handleArtistClick = (artist: Artist) => {
+    if (artist.hasProfile && artist.profileUrl) {
+      closeModal()
+      router.push(artist.profileUrl)
+    }
+  }
 
   return (
     <div className="events-page">
@@ -72,7 +106,12 @@ function Events() {
         <div className="section-container">
           <div className="events-list">
             {filteredEvents.map((event, index) => (
-              <div key={event.id} className={`event-card-modern animate-in`} style={{ animationDelay: `${index * 0.1}s` }}>
+              <div 
+                key={event.id} 
+                className={`event-card-modern animate-in`} 
+                style={{ animationDelay: `${index * 0.1}s`, cursor: 'pointer' }}
+                onClick={() => handleEventClick(event)}
+              >
                 <div className="event-card-image">
                   <img src={event.image} alt={event.title} />
                   <div className="event-card-overlay">
@@ -90,13 +129,69 @@ function Events() {
                     <span className="meta-badge">⏰ {event.time}</span>
                     <span className="meta-badge">📍 {event.location}</span>
                   </div>
-                  <button className="reserve-btn-modern">A venir</button>
+                  <button className="reserve-btn-modern" onClick={(e) => { e.stopPropagation(); handleEventClick(event); }}>
+                    Voir détails
+                  </button>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* Event Details Modal */}
+      {selectedEvent && (
+        <div className="modal-overlay" onClick={closeModal}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={closeModal}>✕</button>
+            
+            <div className="modal-header">
+              <img src={selectedEvent.image} alt={selectedEvent.title} className="modal-image" />
+              <div className="modal-header-info">
+                <h2>{selectedEvent.title}</h2>
+                <div className="modal-meta">
+                  <span>📅 {selectedEvent.date}</span>
+                  <span>⏰ {selectedEvent.time}</span>
+                  <span>📍 {selectedEvent.location}</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="modal-body">
+              {selectedEvent.lineup && (
+                <div className="lineup-section">
+                  <h3>Programmation</h3>
+                  <div className="lineup-list">
+                    {selectedEvent.lineup
+                      .sort((a, b) => a.order - b.order)
+                      .map((artist, index) => (
+                        <div 
+                          key={index} 
+                          className={`lineup-item ${artist.hasProfile ? 'clickable' : ''}`}
+                          onClick={() => handleArtistClick(artist)}
+                        >
+                          <div className="lineup-order">{artist.order}</div>
+                          <div className="lineup-info">
+                            <h4>{artist.name}</h4>
+                            <p>{artist.duration}</p>
+                          </div>
+                          {artist.hasProfile && <span className="lineup-arrow">→</span>}
+                        </div>
+                      ))}
+                  </div>
+                </div>
+              )}
+
+              {selectedEvent.details && (
+                <div className="event-details-section">
+                  <h3>Détails</h3>
+                  <p>{selectedEvent.details}</p>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
