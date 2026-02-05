@@ -40,16 +40,21 @@
   width: 100%;
   max-width: 1200px;
   padding: 2rem;
-  display: block;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 2rem;
+  place-items: center;
 }
 
 .hero-title {
   font-size: clamp(3rem, 8vw, 5rem);
   font-weight: 800;
-  margin: 0 0 2rem 0;
+  margin: 0;
+  padding: 0;
   letter-spacing: 4px;
   text-transform: uppercase;
-  line-height: 1.1;
+  line-height: 1.2;
   text-align: center;
   width: 100%;
   display: block;
@@ -60,6 +65,7 @@
   color: #f5f5f5;
   animation: letterSlideIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
   opacity: 0;
+  white-space: pre;
 }
 
 @keyframes letterSlideIn {
@@ -76,7 +82,8 @@
 .hero-subtitle {
   font-size: 1.3rem;
   color: #ccc;
-  margin: 0 auto 2rem auto;
+  margin: 0;
+  padding: 0;
   font-weight: 300;
   letter-spacing: 1px;
   animation: titleSlide 0.8s ease-out 0.8s backwards;
@@ -102,7 +109,6 @@
   text-decoration: none;
   display: inline-block;
   animation: titleSlide 0.8s ease-out 1s backwards;
-  margin: 0 auto;
 }
 
 .cta-button::before {
