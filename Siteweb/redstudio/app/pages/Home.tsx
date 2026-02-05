@@ -20,7 +20,7 @@ function Home({ onNavigate }: HomeProps) {
       time: "18:00",
       artist: "Local Artists",
       description: "Festival d'artiste bordelais réunissant divers talents émergents.",
-      image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=500&fit=crop",
+      image: "/images/events/Vlisse.jpg",
       category: "concert",
       location: "Plaine de Barbanac "
     }
