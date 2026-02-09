@@ -71,8 +71,20 @@ function Navbar({ currentPage, setCurrentPage }: NavbarProps) {
 
         {/* Navigation Menu */}
         <ul id={menuId} className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
+          <li className="nav-menu-header">
+            <span className="nav-menu-title">Menu</span>
+            <button
+              type="button"
+              className="nav-menu-close"
+              onClick={() => setIsMenuOpen(false)}
+              aria-label="Fermer le menu"
+            >
+              ✕
+            </button>
+          </li>
           <li>
             <button 
+              type="button"
               onClick={() => handleNavigate('home')}
               className={currentPage === 'home' ? 'active' : ''}
             >
@@ -81,6 +93,7 @@ function Navbar({ currentPage, setCurrentPage }: NavbarProps) {
           </li>
           <li>
             <button 
+              type="button"
               onClick={() => handleNavigate('events')}
               className={currentPage === 'events' ? 'active' : ''}
             >
@@ -89,6 +102,7 @@ function Navbar({ currentPage, setCurrentPage }: NavbarProps) {
           </li>
           <li>
             <button 
+              type="button"
               onClick={() => handleNavigate('artists')}
               className={currentPage === 'artists' ? 'active' : ''}
             >
@@ -97,6 +111,7 @@ function Navbar({ currentPage, setCurrentPage }: NavbarProps) {
           </li>
           <li>
             <button 
+              type="button"
               onClick={() => handleNavigate('contact')}
               className={currentPage === 'contact' ? 'active' : ''}
             >
