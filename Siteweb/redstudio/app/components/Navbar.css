@@ -48,6 +48,24 @@
   padding: 0;
 }
 
+.nav-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  border: 0;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease;
+}
+
+.nav-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 .nav-menu li {
   list-style: none;
 }
@@ -102,7 +120,7 @@
   height: 2.5px;
   background-color: #f5f5f5;
   border-radius: 2px;
-  transition: all 0.15s ease;
+  transition: transform 200ms ease, opacity 200ms ease;
 }
 
 .burger-menu.active span:nth-child(1) {
@@ -139,6 +157,11 @@
     display: flex;
   }
 
+  .nav-backdrop {
+    display: block;
+    z-index: 99;
+  }
+
   .nav-menu {
     position: absolute;
     top: 100%;
@@ -150,14 +173,22 @@
     gap: 0;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.15s ease;
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition: max-height 260ms ease, opacity 200ms ease, transform 200ms ease;
     border-bottom: 1px solid #222;
-    visibility: hidden;
+    z-index: 100;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
   }
 
   .nav-menu.active {
-    max-height: 500px;
-    visibility: visible;
+    max-height: calc(100vh - 72px);
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
   }
 
   .nav-menu li {

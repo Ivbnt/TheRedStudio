@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useId, useState } from 'react';
 import './Navbar.css';
 
 type PageType = 'home' | 'events' | 'artists' | 'contact';
@@ -12,6 +12,26 @@ interface NavbarProps {
 
 function Navbar({ currentPage, setCurrentPage }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuId = useId();
+
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsMenuOpen(false);
+    };
+
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+    if (isMenuOpen) document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isMenuOpen]);
 
   const handleNavigate = (page: PageType) => {
     setCurrentPage(page);
@@ -31,16 +51,26 @@ function Navbar({ currentPage, setCurrentPage }: NavbarProps) {
         {/* Menu Burger Button */}
         <button 
           className={`burger-menu ${isMenuOpen ? 'active' : ''}`}
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          type="button"
+          onClick={() => setIsMenuOpen((open) => !open)}
           aria-label="Toggle menu"
+          aria-expanded={isMenuOpen}
+          aria-controls={menuId}
         >
           <span></span>
           <span></span>
           <span></span>
         </button>
 
+        <button
+          type="button"
+          className={`nav-backdrop ${isMenuOpen ? 'active' : ''}`}
+          aria-label="Fermer le menu"
+          onClick={() => setIsMenuOpen(false)}
+        />
+
         {/* Navigation Menu */}
-        <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
+        <ul id={menuId} className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
           <li>
             <button 
               onClick={() => handleNavigate('home')}
