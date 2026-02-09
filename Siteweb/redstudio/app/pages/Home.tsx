@@ -41,7 +41,7 @@ function Home({ onNavigate }: HomeProps) {
       genre: "Indie",
       image: "https://i1.sndcdn.com/avatars-Tb0Ds5cskz6haord-1gs3xQ-t500x500.jpg",
       spotifyId: "",
-      soundcloudUsername: "h2lios"
+      soundcloudUsername: "vinsredstudio"
     },
     {
       id: 3,
@@ -55,7 +55,7 @@ function Home({ onNavigate }: HomeProps) {
       id: 4,
       name: "Izadora Bezie",
       genre: "Pop",
-      image: "https://i1.sndcdn.com/avatars-000589148493-7eh83t-t500x500.jpg",
+      image: "https://i1.sndcdn.com/avatars-6VruH1iR86pz5i0t-8YHzgw-t200x200.jpg",
       spotifyId: "",
       soundcloudUsername: "izadora-bezie"
     }

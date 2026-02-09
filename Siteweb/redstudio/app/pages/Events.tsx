@@ -9,6 +9,7 @@ interface Artist {
   order: number
   hasProfile: boolean
   profileUrl?: string
+  externalUrl?: string
 }
 
 interface Event {
@@ -43,9 +44,9 @@ function Events() {
       category: "concert",
       location: "7 Rue du Cerf Volant, 33000 Bordeaux",
       lineup: [
-        { name: "Vin's", duration: "Première partie", order: 1, hasProfile: true, profileUrl: "/artists#vins" },
-        { name: "DN$", duration: "40 minutes", order: 2, hasProfile: true, profileUrl: "/artists#dns" },
-        { name: "BOYO", duration: "40 minutes", order: 3, hasProfile: false }
+        { name: "Vin's", duration: "Première partie", order: 1, hasProfile: true, externalUrl: "https://soundcloud.com/vinsredstudio" },
+        { name: "DN$", duration: "40 minutes", order: 2, hasProfile: true, externalUrl: "https://open.spotify.com/artist/2NrOZEHVA2k9IysdNfaeBT" },
+        { name: "BOYO", duration: "40 minutes", order: 3, hasProfile: true, externalUrl: "https://open.spotify.com/intl-fr/artist/4mbwDzM7SLLfCn4af9JGQi?si=aKIW3qJPSViau8CUah9i1w&nd=1&dlsi=e91227430d154e2e" }
       ],
       details: "Une soirée exceptionnelle avec trois artistes talentueux. Vin's ouvrira le bal en première partie, suivi de DN$ pour un set de 40 minutes, et BOYO clôturera la soirée avec 40 minutes de performance."
     }
@@ -76,7 +77,14 @@ function Events() {
   }
 
   const handleArtistClick = (artist: Artist) => {
-    if (artist.hasProfile && artist.profileUrl) {
+    if (!artist.hasProfile) return
+
+    if (artist.externalUrl) {
+      window.open(artist.externalUrl, '_blank', 'noopener,noreferrer')
+      return
+    }
+
+    if (artist.profileUrl) {
       closeModal()
       router.push(artist.profileUrl)
     }

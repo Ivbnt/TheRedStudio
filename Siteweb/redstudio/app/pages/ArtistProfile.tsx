@@ -54,7 +54,7 @@ function ArtistProfile({ artistId, onBack }: ArtistProfileProps) {
       image: "https://i1.sndcdn.com/avatars-Tb0Ds5cskz6haord-1gs3xQ-t500x500.jpg",
       instagram: "@vins",
       spotify: "",
-      soundcloud: "h2lios",
+      soundcloud: "vinsredstudio",
       origin: "",
       collective: "Membre du collectif TheRedStudio",
       presentation: "Vin's est un artiste indie rock, membre du collectif TheRedStudio, qui débute officiellement son projet musical en 2025 après plusieurs années consacrées à la production et à l'accompagnement d'autres artistes. Cette expérience lui permet de développer une approche artistique structurée, centrée sur l'écriture et le sens.\n\nSon projet mêle introspection personnelle et réflexion sur les enjeux contemporains, avec une attention particulière portée aux textes et à leur résonance sociale.",

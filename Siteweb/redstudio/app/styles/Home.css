@@ -44,7 +44,8 @@
   grid-template-columns: 1fr;
   grid-template-rows: auto auto auto;
   gap: 2rem;
-  place-items: center;
+  justify-items: center;
+  align-items: center;
 }
 
 .hero-title {

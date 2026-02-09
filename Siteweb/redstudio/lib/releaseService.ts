@@ -50,7 +50,7 @@ const RELEASES_DATA: Release[] = [
     type: "Single",
     image: "https://i1.sndcdn.com/artworks-ygn4RysxMyp4jItf-8tpGjA-t1080x1080.png",
     releaseDate: "2025-08-15",
-    url: "https://soundcloud.com/h2lios/moi-en-mieux",
+    url: "https://soundcloud.com/vinsredstudio/moi-en-mieux",
     platform: "SoundCloud",
   },
   {
@@ -60,7 +60,7 @@ const RELEASES_DATA: Release[] = [
     type: "EP",
     image: "https://i1.sndcdn.com/artworks-QslmxYz2Arev9rin-5mH1OQ-t1080x1080.jpg",
     releaseDate: "2025-05-02",
-    url: "https://soundcloud.com/h2lios/sets/jeune-lyriciste",
+    url: "https://soundcloud.com/vinsredstudio/sets/jeune-lyriciste",
     platform: "SoundCloud",
   },
   // Ivane - SoundCloud releases
@@ -89,7 +89,7 @@ export async function fetchSoundCloudReleases(
   username: string
 ): Promise<Release[]> {
   // Return hardcoded releases for the artist
-  if (username === "h2lios" || username === "vin's") {
+  if (username === "h2lios" || username === "vinsredstudio" || username === "vin's") {
     return RELEASES_DATA.filter(
       (release) => release.platform === "SoundCloud" && release.artist === "Vin's"
     );
