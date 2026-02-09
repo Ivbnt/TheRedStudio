@@ -23,9 +23,14 @@ function Home({ onNavigate, onArtistClick }: HomeProps) {
       description: "Soirée RedCat avec V/N S, DNS et BOYO au Cerf Volant.",
       image: "/images/events/Vlisse.jpg",
       category: "concert",
-      location: "7 Rue du Cerf Volant, 33000 Bordeaux"
+      location: "7 Rue du Cerf Volant, 33000 Bordeaux",
+      status: 'done' as const
     }
   ]
+
+  const getEventBadgeLabel = (event: { status?: 'upcoming' | 'done' }) => {
+    return event.status === 'done' ? 'Terminé' : 'À venir'
+  }
 
   const artists = [
     {
@@ -176,7 +181,7 @@ function Home({ onNavigate, onArtistClick }: HomeProps) {
               >
                 <div className="event-image">
                   <img src={event.image} alt={event.title} />
-                  <div className="event-badge">À venir</div>
+                  <div className="event-badge">{getEventBadgeLabel(event)}</div>
                 </div>
                 <div className="event-info">
                   <h3 className="event-title">{event.title}</h3>
