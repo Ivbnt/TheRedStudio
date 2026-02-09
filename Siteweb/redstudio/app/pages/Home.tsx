@@ -6,9 +6,10 @@ import { fetchAllArtistReleases, type Release } from '@/lib/releaseService'
 
 interface HomeProps {
   onNavigate?: (page: 'events' | 'artists') => void;
+  onArtistClick?: (artistId: number) => void;
 }
 
-function Home({ onNavigate }: HomeProps) {
+function Home({ onNavigate, onArtistClick }: HomeProps) {
   const [recentReleases, setRecentReleases] = useState<Release[]>([])
   const [loadingReleases, setLoadingReleases] = useState(true)
 
@@ -197,7 +198,12 @@ function Home({ onNavigate }: HomeProps) {
           <h2 className="section-title">Nos Artistes</h2>
           <div className="artists-grid">
             {artists.map((artist) => (
-              <button key={artist.id} onClick={() => onNavigate?.('artists')} className="artist-card artist-card-link">
+              <button
+                key={artist.id}
+                onClick={() => (onArtistClick ? onArtistClick(artist.id) : onNavigate?.('artists'))}
+                className="artist-card artist-card-link"
+                type="button"
+              >
                 <div className="artist-bubble">
                   <img src={artist.image} alt={artist.name} />
                 </div>

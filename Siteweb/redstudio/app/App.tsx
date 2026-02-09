@@ -2,18 +2,17 @@
 
 import { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
+import ArtistSheetModal from './components/ArtistSheetModal';
 import Home from './pages/Home';
 import Events from './pages/Events';
 import Artists from './pages/Artists';
-import ArtistProfile from './pages/ArtistProfile';
 import Contact from './pages/Contact';
 import './App.css';
 
 type PageType = 'home' | 'events' | 'artists' | 'contact';
-type ExtendedPageType = PageType | 'artist-profile';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<ExtendedPageType>('home');
+  const [currentPage, setCurrentPage] = useState<PageType>('home');
   const [selectedArtistId, setSelectedArtistId] = useState<number | null>(null);
 
   useEffect(() => {
@@ -22,11 +21,9 @@ function App() {
 
   const handleArtistClick = (artistId: number) => {
     setSelectedArtistId(artistId);
-    setCurrentPage('artist-profile');
   };
 
-  const handleBackToArtists = () => {
-    setCurrentPage('artists');
+  const handleCloseArtistSheet = () => {
     setSelectedArtistId(null);
   };
 
@@ -40,17 +37,11 @@ function App() {
   const renderPage = () => {
     switch (currentPage) {
       case 'home':
-        return <Home onNavigate={(page) => setCurrentPage(page)} />;
+        return <Home onNavigate={(page) => setCurrentPage(page)} onArtistClick={handleArtistClick} />;
       case 'events':
         return <Events />;
       case 'artists':
         return <Artists onArtistClick={handleArtistClick} />;
-      case 'artist-profile':
-        return selectedArtistId ? (
-          <ArtistProfile artistId={selectedArtistId} onBack={handleBackToArtists} />
-        ) : (
-          <Artists onArtistClick={handleArtistClick} />
-        );
       case 'contact':
         return <Contact />;
       default:
@@ -61,12 +52,14 @@ function App() {
   return (
     <>
       <Navbar 
-        currentPage={currentPage === 'artist-profile' ? 'artists' : currentPage} 
+        currentPage={currentPage} 
         setCurrentPage={handleNavbarPageChange} 
       />
       <main className="page-content">
         {renderPage()}
       </main>
+
+      <ArtistSheetModal artistId={selectedArtistId} onClose={handleCloseArtistSheet} />
       
       <footer className="footer">
         <div className="section-container">
