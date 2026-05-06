@@ -152,7 +152,7 @@ function Home({ onNavigate, onArtistClick }: HomeProps) {
         const allReleases: Release[] = []
 
         // Fetch releases for each artist
-        for (const artist of artists) {
+        for (const artist of allArtists) {
           const artistReleases = await fetchAllArtistReleases(
             artist.name,
             artist.spotifyId,
