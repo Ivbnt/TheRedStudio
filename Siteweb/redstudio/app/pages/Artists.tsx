@@ -15,6 +15,16 @@ interface Artist {
   soundcloud: string
 }
 
+interface Beatmaker {
+  id: number
+  name: string
+  image: string
+  instagram: string
+  spotify: string
+  soundcloud: string
+  youtube: string
+}
+
 interface ArtistsProps {
   onArtistClick?: (artistId: number) => void
 }
@@ -65,10 +75,70 @@ function Artists({ onArtistClick }: ArtistsProps = {}) {
       instagram: "@izadorabezie",
       spotify: "",
       soundcloud: "izadora-bezie"
+    },
+    {
+      id: 5,
+      name: "Roxas",
+      genre: "Rap",
+      bio: "",
+      image: "https://i1.sndcdn.com/visuals-000714548149-AlO3Xv-t2480x520.jpg",
+      instagram: "roxas.xill",
+      spotify: "0LMXJ8WrZrQq4vKYCIeOKC",
+      soundcloud: "roxasxiiiiiiiiiiiii"
+    },
+    {
+      id: 6,
+      name: "Arless",
+      genre: "Rap",
+      bio: "",
+      image: "https://scontent-cdg4-2.cdninstagram.com/v/t51.2885-19/497906746_18496813321052455_1328063587744190857_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=scontent-cdg4-2.cdninstagram.com&_nc_cat=107&_nc_oc=Q6cZ2gFwrBQ5LgmpIX_AeqJl33RSxksZKv6fe4Azyd7uEHU9mvo6usbH0cFoTlzAVnesuTAjhNX102I1nvdbYGvyg9A8&_nc_ohc=W4ubCYwaudcQ7kNvwGz5Orh&_nc_gid=mpcCLmh0OEFHUc4xXlcYiQ&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_Af5QIxLZBZWM5Lr2Q10y8_bWEeSi1wvRTg1yQQFYG_8ZDg&oe=6A01685C&_nc_sid=8b3546",
+      instagram: "arlessmusic_",
+      spotify: "",
+      soundcloud: ""
+    },
+    {
+      id: 7,
+      name: "101 Mess",
+      genre: "Rap",
+      bio: "",
+      image: "https://i1.sndcdn.com/avatars-ZstNFRgwqwSpXu6d-5h5nOg-t500x500.jpg",
+      instagram: "101mess",
+      spotify: "5gBA2ORDWJZujcSojMLP5c",
+      soundcloud: ""
     }
   ]
 
   const genres = ['Tous', 'Rap', 'Pop', 'Indie']
+
+  const beatmakers: Beatmaker[] = [
+    {
+      id: 1,
+      name: "KBBY",
+      image: "",
+      instagram: "kbby.kbabe",
+      spotify: "",
+      soundcloud: "",
+      youtube: "@kbbykbabe"
+    },
+    {
+      id: 2,
+      name: "ayozain",
+      image: "https://i.scdn.co/image/ab6761610000e5ebbbe73761047b0123da69147b",
+      instagram: "ayozain_",
+      spotify: "6j5ZRx1CvMaBian5Y0Qi2E",
+      soundcloud: "",
+      youtube: ""
+    },
+    {
+      id: 3,
+      name: "409 Asher",
+      image: "",
+      instagram: "409asher",
+      spotify: "",
+      soundcloud: "",
+      youtube: ""
+    }
+  ]
 
   // Load releases from all artists on component mount
   useEffect(() => {
@@ -153,20 +223,74 @@ function Artists({ onArtistClick }: ArtistsProps = {}) {
                   onClick={() => onArtistClick && onArtistClick(artist.id)}
                   style={{ cursor: onArtistClick ? 'pointer' : 'default' }}
                 >
-                  <img src={artist.image} alt={artist.name} />
+                  {artist.image
+                    ? <img src={artist.image} alt={artist.name} />
+                    : <div className="artist-circle-placeholder">{artist.name[0]}</div>
+                  }
                   <div className="circle-overlay"></div>
                 </div>
                 <h3 className="artist-name">{artist.name}</h3>
                 <p className="artist-genre">{artist.genre}</p>
                 <div className="artist-social-links">
                   {artist.spotify && (
-                    <a href={`https://open.spotify.com/artist/${artist.spotify}`} target="_blank" rel="noopener noreferrer" className="social-icon">
+                    <a href={`https://open.spotify.com/artist/${artist.spotify}`} target="_blank" rel="noopener noreferrer" className="social-icon" title="Spotify">
                       🎵
                     </a>
                   )}
-                  <a href={`https://soundcloud.com/${artist.soundcloud}`} target="_blank" rel="noopener noreferrer" className="social-icon">
-                    ☁️
-                  </a>
+                  {artist.soundcloud && (
+                    <a href={`https://soundcloud.com/${artist.soundcloud}`} target="_blank" rel="noopener noreferrer" className="social-icon" title="SoundCloud">
+                      ☁️
+                    </a>
+                  )}
+                  {artist.instagram && (
+                    <a href={`https://www.instagram.com/${artist.instagram.replace('@', '')}`} target="_blank" rel="noopener noreferrer" className="social-icon" title="Instagram">
+                      📸
+                    </a>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Beatmakers / Producers Section */}
+      <section className="beatmakers-section">
+        <div className="section-container">
+          <h2 className="section-title">Producteurs &amp; Beatmakers</h2>
+          <div className="artists-circles-grid">
+            {beatmakers.map((bm) => (
+              <div key={bm.id} className="artist-circle-container">
+                <div className="artist-circle" style={{ cursor: 'default' }}>
+                  {bm.image
+                    ? <img src={bm.image} alt={bm.name} />
+                    : <div className="artist-circle-placeholder">{bm.name[0]}</div>
+                  }
+                  <div className="circle-overlay"></div>
+                </div>
+                <h3 className="artist-name">{bm.name}</h3>
+                <p className="artist-genre">Beatmaker</p>
+                <div className="artist-social-links">
+                  {bm.spotify && (
+                    <a href={`https://open.spotify.com/artist/${bm.spotify}`} target="_blank" rel="noopener noreferrer" className="social-icon" title="Spotify">
+                      🎵
+                    </a>
+                  )}
+                  {bm.soundcloud && (
+                    <a href={`https://soundcloud.com/${bm.soundcloud}`} target="_blank" rel="noopener noreferrer" className="social-icon" title="SoundCloud">
+                      ☁️
+                    </a>
+                  )}
+                  {bm.instagram && (
+                    <a href={`https://www.instagram.com/${bm.instagram}`} target="_blank" rel="noopener noreferrer" className="social-icon" title="Instagram">
+                      📸
+                    </a>
+                  )}
+                  {bm.youtube && (
+                    <a href={`https://www.youtube.com/${bm.youtube}`} target="_blank" rel="noopener noreferrer" className="social-icon" title="YouTube">
+                      📡
+                    </a>
+                  )}
                 </div>
               </div>
             ))}

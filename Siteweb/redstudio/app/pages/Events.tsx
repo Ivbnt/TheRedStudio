@@ -24,6 +24,8 @@ interface Event {
   location: string
   lineup?: Artist[]
   details?: string
+  gallery?: string[]
+  instagramCredit?: string
 }
 
 function Events() {
@@ -49,6 +51,31 @@ function Events() {
         { name: "BOYO", duration: "40 minutes", order: 3, hasProfile: true, externalUrl: "https://open.spotify.com/intl-fr/artist/4mbwDzM7SLLfCn4af9JGQi?si=aKIW3qJPSViau8CUah9i1w&nd=1&dlsi=e91227430d154e2e" }
       ],
       details: "Une soirée exceptionnelle avec trois artistes talentueux. Vin's ouvrira le bal en première partie, suivi de DN$ pour un set de 40 minutes, et BOYO clôturera la soirée avec 40 minutes de performance."
+    },
+    {
+      id: 2,
+      title: "Afev'tival",
+      date: "22 avril 2026",
+      time: "Journée complète",
+      artist: "RedStudio × AFEV",
+      description: "Festival d'une journée sur le campus Victoire de Bordeaux pour clôturer l'année associative. Scène ouverte, stands et ambiance sonore assurée par RedStudio.",
+      image: "/images/events/afev/RNN_4794.jpg",
+      category: "projet",
+      location: "Campus Victoire, Bordeaux",
+      gallery: [
+        "/images/events/afev/RNN_4794.jpg",
+        "/images/events/afev/RNN_5223.jpg",
+        "/images/events/afev/RNN_5319.jpg",
+        "/images/events/afev/RNN_5354.jpg",
+        "/images/events/afev/RNN_5396.jpg",
+        "/images/events/afev/RNN_5429.jpg",
+        "/images/events/afev/RNN_5452.jpg",
+        "/images/events/afev/RNN_5463.jpg",
+        "/images/events/afev/RNN_5473.jpg",
+        "/images/events/afev/RNN_5508.jpg"
+      ],
+      instagramCredit: "runnner961",
+      details: "Afev'tival est un festival d'une journée organisé sur le campus Victoire de Bordeaux, destiné à clôturer l'année associative aux côtés des parents et des jeunes mentorés. L'événement proposait des spectacles, des stands ainsi que la présence de professionnels. Étaient également présents toutes les personnes ayant contribué au bon déroulement des missions : volontaires et bénévoles.\n\nOrganisé par l'association Afev, une association française créée en 1992 qui mobilise des étudiants bénévoles autour d'actions de solidarité et d'accompagnement scolaire dans les quartiers populaires, cet événement met en lumière l'engagement collectif.\n\nÀ cette occasion, RedStudio a mis en place une scène ouverte destinée aux volontaires, bénévoles, salariés et participants, tout en assurant l'ambiance sonore de la journée.\n\nCe projet solidaire, placé sous le signe de la rencontre et du partage, a été une très belle expérience, riche en échanges et en moments humains."
     }
   ]
 
@@ -64,6 +91,7 @@ function Events() {
     { id: 'all', label: 'Tous' },
     { id: 'session', label: 'Sessions' },
     { id: 'concert', label: 'Concerts' },
+    { id: 'projet', label: 'Projets' },
     { id: 'workshop', label: 'Ateliers' },
     { id: 'jam', label: 'Jam Night' }
   ]
@@ -193,7 +221,23 @@ function Events() {
               {selectedEvent.details && (
                 <div className="event-details-section">
                   <h3>Détails</h3>
-                  <p>{selectedEvent.details}</p>
+                  {selectedEvent.details.split('\n\n').map((paragraph, i) => (
+                    <p key={i} style={{ marginBottom: '1rem' }}>{paragraph}</p>
+                  ))}
+                </div>
+              )}
+
+              {selectedEvent.gallery && selectedEvent.gallery.length > 0 && (
+                <div className="event-gallery-section">
+                  <h3>Photos</h3>
+                  {selectedEvent.instagramCredit && (
+                    <p className="gallery-credit">📷 Photos : <a href={`https://www.instagram.com/${selectedEvent.instagramCredit}`} target="_blank" rel="noopener noreferrer">@{selectedEvent.instagramCredit}</a></p>
+                  )}
+                  <div className="event-gallery-grid">
+                    {selectedEvent.gallery.map((photo, i) => (
+                      <img key={i} src={photo} alt={`${selectedEvent.title} - photo ${i + 1}`} className="gallery-thumb" />
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
