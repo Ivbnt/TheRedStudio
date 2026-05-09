@@ -259,10 +259,15 @@
   .event-card-modern {
     flex-shrink: 0;
     width: 280px;
+    height: 480px;
+    overflow: hidden;
   }
 
-  .event-card-image {
-    height: 220px;
+  .event-card-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .event-card-title {
@@ -368,6 +373,8 @@
   .event-card-modern {
     flex-shrink: 0;
     width: 280px;
+    height: 460px;
+    overflow: hidden;
   }
 }
 
@@ -379,6 +386,8 @@
   
   .event-card-modern {
     width: 240px;
+    height: 440px;
+    overflow: hidden;
   }
   
   .filters-section {

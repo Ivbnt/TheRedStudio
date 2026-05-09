@@ -11,7 +11,8 @@ const allArtists = [
     genre: "Rap",
     image: "https://i.scdn.co/image/ab676161000051746cf3aff7bc9406c188666fbc",
     spotifyId: "2NrOZEHVA2k9IysdNfaeBT",
-    soundcloudUsername: "dns-462860171"
+    soundcloudUsername: "dns-462860171",
+    sheetId: 1
   },
   {
     id: 2,
@@ -19,7 +20,8 @@ const allArtists = [
     genre: "Indie",
     image: "https://i1.sndcdn.com/avatars-Tb0Ds5cskz6haord-1gs3xQ-t500x500.jpg",
     spotifyId: "",
-    soundcloudUsername: "vinsredstudio"
+    soundcloudUsername: "vinsredstudio",
+    sheetId: 2
   },
   {
     id: 3,
@@ -27,7 +29,8 @@ const allArtists = [
     genre: "Pop",
     image: "https://i1.sndcdn.com/avatars-4rkFmW8Vft47Pqpw-LxBGPQ-t500x500.jpg",
     spotifyId: "",
-    soundcloudUsername: "user-821023271"
+    soundcloudUsername: "user-821023271",
+    sheetId: 3
   },
   {
     id: 4,
@@ -35,23 +38,26 @@ const allArtists = [
     genre: "Pop",
     image: "https://i1.sndcdn.com/avatars-6VruH1iR86pz5i0t-8YHzgw-t200x200.jpg",
     spotifyId: "",
-    soundcloudUsername: "izadora-bezie"
+    soundcloudUsername: "izadora-bezie",
+    sheetId: 4
   },
   {
     id: 5,
-    name: "Roxas",
+    name: "RoxasXIII",
     genre: "Rap",
     image: "https://i1.sndcdn.com/visuals-000714548149-AlO3Xv-t2480x520.jpg",
     spotifyId: "0LMXJ8WrZrQq4vKYCIeOKC",
-    soundcloudUsername: "roxasxiiiiiiiiiiiii"
+    soundcloudUsername: "roxasxiiiiiiiiiiiii",
+    sheetId: 9
   },
   {
     id: 6,
-    name: "Arless",
+    name: "Arles",
     genre: "Rap",
-    image: "https://scontent-cdg4-2.cdninstagram.com/v/t51.2885-19/497906746_18496813321052455_1328063587744190857_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=scontent-cdg4-2.cdninstagram.com&_nc_cat=107&_nc_oc=Q6cZ2gFwrBQ5LgmpIX_AeqJl33RSxksZKv6fe4Azyd7uEHU9mvo6usbH0cFoTlzAVnesuTAjhNX102I1nvdbYGvyg9A8&_nc_ohc=W4ubCYwaudcQ7kNvwGz5Orh&_nc_gid=mpcCLmh0OEFHUc4xXlcYiQ&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_Af5QIxLZBZWM5Lr2Q10y8_bWEeSi1wvRTg1yQQFYG_8ZDg&oe=6A01685C&_nc_sid=8b3546",
-    spotifyId: "",
-    soundcloudUsername: ""
+    image: "/images/artistes/arles1.jpg",
+    spotifyId: "4yS7iexox7gowF7CQdjjAD",
+    soundcloudUsername: "",
+    sheetId: 8
   },
   {
     id: 7,
@@ -59,7 +65,8 @@ const allArtists = [
     genre: "Rap",
     image: "https://i1.sndcdn.com/avatars-ZstNFRgwqwSpXu6d-5h5nOg-t500x500.jpg",
     spotifyId: "5gBA2ORDWJZujcSojMLP5c",
-    soundcloudUsername: ""
+    soundcloudUsername: "",
+    sheetId: 6
   }
 ]
 
@@ -247,7 +254,13 @@ function Home({ onNavigate, onArtistClick }: HomeProps) {
             {displayedArtists.map((artist) => (
               <button
                 key={artist.id}
-                onClick={() => (onArtistClick ? onArtistClick(artist.id) : onNavigate?.('artists'))}
+                onClick={() => {
+                  if (artist.sheetId !== undefined && onArtistClick) {
+                    onArtistClick(artist.sheetId)
+                  } else {
+                    onNavigate?.('artists')
+                  }
+                }}
                 className="artist-card artist-card-link"
                 type="button"
               >

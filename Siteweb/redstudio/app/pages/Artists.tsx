@@ -13,6 +13,7 @@ interface Artist {
   instagram: string
   spotify: string
   soundcloud: string
+  sheetId?: number
 }
 
 interface Beatmaker {
@@ -23,6 +24,7 @@ interface Beatmaker {
   spotify: string
   soundcloud: string
   youtube: string
+  sheetId?: number
 }
 
 interface ArtistsProps {
@@ -78,23 +80,25 @@ function Artists({ onArtistClick }: ArtistsProps = {}) {
     },
     {
       id: 5,
-      name: "Roxas",
+      name: "RoxasXIII",
       genre: "Rap",
       bio: "",
       image: "https://i1.sndcdn.com/visuals-000714548149-AlO3Xv-t2480x520.jpg",
       instagram: "roxas.xill",
       spotify: "0LMXJ8WrZrQq4vKYCIeOKC",
-      soundcloud: "roxasxiiiiiiiiiiiii"
+      soundcloud: "roxasxiiiiiiiiiiiii",
+      sheetId: 9
     },
     {
       id: 6,
-      name: "Arless",
+      name: "Arles",
       genre: "Rap",
       bio: "",
-      image: "https://scontent-cdg4-2.cdninstagram.com/v/t51.2885-19/497906746_18496813321052455_1328063587744190857_n.jpg?stp=dst-jpg_s320x320_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=scontent-cdg4-2.cdninstagram.com&_nc_cat=107&_nc_oc=Q6cZ2gFwrBQ5LgmpIX_AeqJl33RSxksZKv6fe4Azyd7uEHU9mvo6usbH0cFoTlzAVnesuTAjhNX102I1nvdbYGvyg9A8&_nc_ohc=W4ubCYwaudcQ7kNvwGz5Orh&_nc_gid=mpcCLmh0OEFHUc4xXlcYiQ&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_Af5QIxLZBZWM5Lr2Q10y8_bWEeSi1wvRTg1yQQFYG_8ZDg&oe=6A01685C&_nc_sid=8b3546",
-      instagram: "arlessmusic_",
-      spotify: "",
-      soundcloud: ""
+      image: "/images/artistes/arles1.jpg",
+      instagram: "arlesnelesvoitpas",
+      spotify: "4yS7iexox7gowF7CQdjjAD",
+      soundcloud: "",
+      sheetId: 8
     },
     {
       id: 7,
@@ -104,7 +108,8 @@ function Artists({ onArtistClick }: ArtistsProps = {}) {
       image: "https://i1.sndcdn.com/avatars-ZstNFRgwqwSpXu6d-5h5nOg-t500x500.jpg",
       instagram: "101mess",
       spotify: "5gBA2ORDWJZujcSojMLP5c",
-      soundcloud: ""
+      soundcloud: "",
+      sheetId: 6
     }
   ]
 
@@ -136,7 +141,18 @@ function Artists({ onArtistClick }: ArtistsProps = {}) {
       instagram: "409asher",
       spotify: "",
       soundcloud: "",
-      youtube: ""
+      youtube: "",
+      sheetId: 5
+    },
+    {
+      id: 4,
+      name: "gapple",
+      image: "",
+      instagram: "prodgvpple",
+      spotify: "",
+      soundcloud: "",
+      youtube: "@prodgvpple",
+      sheetId: 7
     }
   ]
 
@@ -220,7 +236,7 @@ function Artists({ onArtistClick }: ArtistsProps = {}) {
               <div key={artist.id} className="artist-circle-container">
                 <div 
                   className="artist-circle"
-                  onClick={() => onArtistClick && onArtistClick(artist.id)}
+                  onClick={() => onArtistClick && onArtistClick(artist.sheetId ?? artist.id)}
                   style={{ cursor: onArtistClick ? 'pointer' : 'default' }}
                 >
                   {artist.image
@@ -261,7 +277,11 @@ function Artists({ onArtistClick }: ArtistsProps = {}) {
           <div className="artists-circles-grid">
             {beatmakers.map((bm) => (
               <div key={bm.id} className="artist-circle-container">
-                <div className="artist-circle" style={{ cursor: 'default' }}>
+                <div
+                  className="artist-circle"
+                  onClick={() => bm.sheetId && onArtistClick && onArtistClick(bm.sheetId)}
+                  style={{ cursor: bm.sheetId && onArtistClick ? 'pointer' : 'default' }}
+                >
                   {bm.image
                     ? <img src={bm.image} alt={bm.name} />
                     : <div className="artist-circle-placeholder">{bm.name[0]}</div>
