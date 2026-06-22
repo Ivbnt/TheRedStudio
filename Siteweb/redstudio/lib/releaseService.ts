@@ -11,7 +11,27 @@ export interface Release {
 
 // Hardcoded releases data
 const RELEASES_DATA: Release[] = [
-  // DN$ - Spotify releases
+  // 101 Mess
+  {
+    id: "101mess-studkitchen",
+    title: "studkitchen (feat. DN$)",
+    artist: "101 Mess",
+    type: "Single",
+    image: "https://i.scdn.co/image/ab67616d00001e0267e40930395d928918741eb1",
+    releaseDate: "2026-06-22",
+    url: "https://open.spotify.com/track/0XswZJmeWDAiHrDXl2n6JC",
+    platform: "Spotify",
+  },
+  {
+    id: "dn-courircpaspouroim",
+    title: "COURIRCPASPOUROIM",
+    artist: "DN$",
+    type: "EP",
+    image: "https://i1.sndcdn.com/artworks-mCLzEJQQy9YT4H2v-KX8mKQ-t1080x1080.jpg",
+    releaseDate: "2026-06-22",
+    url: "https://soundcloud.com/dns-462860171/sets/courircpaspouroim",
+    platform: "SoundCloud",
+  },
   {
     id: "dn-bz-tout-un-label",
     title: "BZ TOUT UN LABEL",
