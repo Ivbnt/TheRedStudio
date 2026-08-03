@@ -37,16 +37,6 @@ function Events() {
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null)
   const [carouselIndex, setCarouselIndex] = useState(0)
 
-  const prevCarousel = () => {
-    if (!selectedEvent?.gallery) return
-    setCarouselIndex(i => (i - 1 + selectedEvent.gallery!.length) % selectedEvent.gallery!.length)
-  }
-
-  const nextCarousel = () => {
-    if (!selectedEvent?.gallery) return
-    setCarouselIndex(i => (i + 1) % selectedEvent.gallery!.length)
-  }
-
   const events: Event[] = [
     {
       id: 3,
@@ -270,19 +260,37 @@ function Events() {
                   )}
                   {selectedEvent.useCarousel ? (
                     <div className="gallery-carousel">
-                      <button className="carousel-btn carousel-prev" onClick={prevCarousel}>&#8249;</button>
-                      <img
-                        src={selectedEvent.gallery[carouselIndex]}
-                        alt={`${selectedEvent.title} - photo ${carouselIndex + 1}`}
-                        className="carousel-image"
-                      />
-                      <button className="carousel-btn carousel-next" onClick={nextCarousel}>&#8250;</button>
+                      <div className="carousel-track">
+                        <button
+                          className="carousel-btn"
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            setCarouselIndex(prev =>
+                              (prev - 1 + selectedEvent.gallery!.length) % selectedEvent.gallery!.length
+                            )
+                          }}
+                        >&#8249;</button>
+                        <img
+                          src={selectedEvent.gallery[carouselIndex]}
+                          alt={`${selectedEvent.title} - photo ${carouselIndex + 1}`}
+                          className="carousel-image"
+                        />
+                        <button
+                          className="carousel-btn"
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            setCarouselIndex(prev =>
+                              (prev + 1) % selectedEvent.gallery!.length
+                            )
+                          }}
+                        >&#8250;</button>
+                      </div>
                       <div className="carousel-dots">
                         {selectedEvent.gallery.map((_, i) => (
                           <span
                             key={i}
                             className={`carousel-dot ${i === carouselIndex ? 'active' : ''}`}
-                            onClick={() => setCarouselIndex(i)}
+                            onClick={(e) => { e.stopPropagation(); setCarouselIndex(i) }}
                           />
                         ))}
                       </div>
