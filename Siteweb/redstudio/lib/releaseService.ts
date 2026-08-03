@@ -64,6 +64,16 @@ const RELEASES_DATA: Release[] = [
   },
   // Vin's - SoundCloud releases
   {
+    id: "vins-miel-de-frelon",
+    title: "Miel de frelon",
+    artist: "Vin's",
+    type: "EP",
+    image: "https://i1.sndcdn.com/artworks-6WAyOl8ScyH8mQqr-zLv2Uw-t1080x1080.jpg",
+    releaseDate: "2026-07-19",
+    url: "https://soundcloud.com/vinsredstudio/sets/mieldefrelon",
+    platform: "SoundCloud",
+  },
+  {
     id: "vins-moi-en-mieux",
     title: "Moi en mieux",
     artist: "Vin's",
