@@ -25,7 +25,9 @@ interface Event {
   lineup?: Artist[]
   details?: string
   gallery?: string[]
+  useCarousel?: boolean
   instagramCredit?: string
+  youtubeUrl?: string
 }
 
 function Events() {
@@ -33,8 +35,39 @@ function Events() {
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [filteredEvents, setFilteredEvents] = useState<Event[]>([])
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null)
+  const [carouselIndex, setCarouselIndex] = useState(0)
+
+  const prevCarousel = () => {
+    if (!selectedEvent?.gallery) return
+    setCarouselIndex(i => (i - 1 + selectedEvent.gallery!.length) % selectedEvent.gallery!.length)
+  }
+
+  const nextCarousel = () => {
+    if (!selectedEvent?.gallery) return
+    setCarouselIndex(i => (i + 1) % selectedEvent.gallery!.length)
+  }
 
   const events: Event[] = [
+    {
+      id: 3,
+      title: "33Mesures",
+      date: "17 juillet 2026",
+      time: "Soirée",
+      artist: "RedStudio × CROUS × Apollo",
+      description: "Cypher rap organisé à Bordeaux, en collaboration avec le CROUS de Bordeaux et Apollo.",
+      image: "/images/events/33mesures/33mesures_1.jpg",
+      category: "session",
+      location: "Bordeaux",
+      gallery: [
+        "/images/events/33mesures/33mesures_1.jpg",
+        "/images/events/33mesures/33mesures_2.jpg",
+        "/images/events/33mesures/33mesures_3.jpg",
+        "/images/events/33mesures/33mesures_4.jpg",
+      ],
+      useCarousel: true,
+      youtubeUrl: "https://www.youtube.com/embed/Kxc6OPGjO0c",
+      details: "33Mesures est un cypher rap organisé à Bordeaux, né d'une collaboration entre RedStudio, le CROUS de Bordeaux et Apollo.\n\nFormat cypher : plusieurs artistes se succèdent autour d'un même micro, dans une atmosphère de scène intimiste baignée de lumières rouges. Un format brut, collectif, où chaque mesure compte.\n\nUn projet qui incarne l'esprit du collectif : créer des espaces d'expression pour les artistes émergents, dans une logique de partage et de transmission."
+    },
     {
       id: 1,
       title: "RedCat Concert",
@@ -97,11 +130,13 @@ function Events() {
   ]
 
   const handleEventClick = (event: Event) => {
+    setCarouselIndex(0)
     setSelectedEvent(event)
   }
 
   const closeModal = () => {
     setSelectedEvent(null)
+    setCarouselIndex(0)
   }
 
   const handleArtistClick = (artist: Artist) => {
@@ -233,10 +268,46 @@ function Events() {
                   {selectedEvent.instagramCredit && (
                     <p className="gallery-credit">📷 Photos : <a href={`https://www.instagram.com/${selectedEvent.instagramCredit}`} target="_blank" rel="noopener noreferrer">@{selectedEvent.instagramCredit}</a></p>
                   )}
-                  <div className="event-gallery-grid">
-                    {selectedEvent.gallery.map((photo, i) => (
-                      <img key={i} src={photo} alt={`${selectedEvent.title} - photo ${i + 1}`} className="gallery-thumb" />
-                    ))}
+                  {selectedEvent.useCarousel ? (
+                    <div className="gallery-carousel">
+                      <button className="carousel-btn carousel-prev" onClick={prevCarousel}>&#8249;</button>
+                      <img
+                        src={selectedEvent.gallery[carouselIndex]}
+                        alt={`${selectedEvent.title} - photo ${carouselIndex + 1}`}
+                        className="carousel-image"
+                      />
+                      <button className="carousel-btn carousel-next" onClick={nextCarousel}>&#8250;</button>
+                      <div className="carousel-dots">
+                        {selectedEvent.gallery.map((_, i) => (
+                          <span
+                            key={i}
+                            className={`carousel-dot ${i === carouselIndex ? 'active' : ''}`}
+                            onClick={() => setCarouselIndex(i)}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="event-gallery-grid">
+                      {selectedEvent.gallery.map((photo, i) => (
+                        <img key={i} src={photo} alt={`${selectedEvent.title} - photo ${i + 1}`} className="gallery-thumb" />
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {selectedEvent.youtubeUrl && (
+                <div className="event-youtube-section">
+                  <h3>Vidéo</h3>
+                  <div className="youtube-embed-wrapper">
+                    <iframe
+                      src={selectedEvent.youtubeUrl}
+                      title={selectedEvent.title}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
                   </div>
                 </div>
               )}

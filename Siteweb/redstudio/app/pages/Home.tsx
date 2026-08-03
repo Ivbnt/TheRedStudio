@@ -82,6 +82,18 @@ function Home({ onNavigate, onArtistClick }: HomeProps) {
 
   const events = [
     {
+      id: 3,
+      title: "33Mesures",
+      date: "17 juillet 2026",
+      time: "Soirée",
+      artist: "RedStudio × CROUS × Apollo",
+      description: "Cypher rap organisé à Bordeaux, en collaboration avec le CROUS de Bordeaux et Apollo.",
+      image: "/images/events/33mesures/33mesures_1.jpg",
+      category: "session",
+      location: "Bordeaux",
+      status: 'done' as const
+    },
+    {
       id: 1,
       title: "RedCat Concert",
       date: "7 février 2026",
